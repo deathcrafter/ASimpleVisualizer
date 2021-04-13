@@ -1,0 +1,17 @@
+[ScriptAudioMeasure]
+Measure=Script
+ScriptFile=#@#Factories\MeasureFactory.lua
+IncFile=#@#MeasuresandBars\Measures.inc
+Number=#Bands#
+SectionName=MeasureBand%%
+AudioMeasureOption0=Measure
+AudioMeasureValue0=Plugin
+AudioMeasureOption1=Plugin
+AudioMeasureValue1=AudioLevel
+AudioMeasureOption2=Parent
+AudioMeasureValue2=MeasureAudio
+AudioMeasureOption3=Type
+AudioMeasureValue3=Band
+AudioMeasureOption4=BandIdx
+AudioMeasureValue4=%%
+UpdateDivider=-1

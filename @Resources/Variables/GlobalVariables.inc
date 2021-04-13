@@ -1,34 +1,49 @@
 [Variables]
-Bands=32
+;Visualizer Variables
+Bands=9
 
-Height=200
+Height=170
 
 BarWidth=20
 
-Levitate=20
+BarGap=7
 
-ColorCount=7
+BarStrokeWidth=1.5
+
+CornerRounding=5
+
+Levitate=0
+
+MirrorDistance=5
+
+Angle=90
+
+;Color Variables
+ColorCount=2
 GradientCount=(#ColorCount#-1)
 
 DefaultColor=0,0,0
 
-ColorA0=148, 0, 211
-ColorA1=75, 0, 130
+ColorA0=48, 178, 130
+ColorA1=123, 94, 235
 ColorA2=0, 0, 255
 ColorA3=0, 255, 0
 ColorA4=255, 255, 0
 ColorA5=255, 127, 0
 ColorA6=255, 0, 0
 
-Angle=0
+;Audio Measure Variables
 FFTSize=2048
 FFTAttack=15
-FFTDecay=250
+FFTDecay=650
+InvertMeasure=1
 
-;BarType: Normal | Random | Image
-BarType=Normal
-;Reflection : Reflection | A if don't want reflection // Image type doesn't have reflections
-Reflection=
+;BarType : Normal | Reflection | MirrorY | MirrorX | MirrorXY
+BarType=MirrorX
 
 ;Dont change below
 @includeGradient=#@#Variables\Gradient.inc
+@includeColorMeasures=#@#MeasuresandBars\ColorMeasures.inc
+@includeColorScript=#@#Scripts\Colors.inc
+
+
