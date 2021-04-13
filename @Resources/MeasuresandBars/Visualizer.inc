@@ -1,0 +1,24 @@
+[MeterShape]
+Meter=Shape
+W=(Abs(Cos(#Angle#%360*Pi/180))*(2*(#BarWidth#+#BarGap#)*#Bands#-#BarGap#)+Abs(Sin(#Angle#%360*Pi/180))*#Height#+#Levitate#)
+H=(Abs(Sin(#Angle#%360*Pi/180))*(2*(#BarWidth#+#BarGap#)*#Bands#-#BarGap#)+Abs(Cos(#Angle#%360*Pi/180))*#Height#+#Levitate#)
+Shape= Rectangle 0, (#Height# + #Levitate# - #Levitate#*[MeasureBand0]), #BarWidth#, (-1*(#Height#*[MeasureBand0])), #CornerRounding# | Fill Color #Color0# | StrokeWidth #BarStrokeWidth#
+Shape2=Rectangle 27, (#Height# + #Levitate# - #Levitate#*[MeasureBand1]), #BarWidth#, (-1*(#Height#*[MeasureBand1])), #CornerRounding# | Fill Color #Color1# | StrokeWidth #BarStrokeWidth#
+Shape3=Rectangle 54, (#Height# + #Levitate# - #Levitate#*[MeasureBand2]), #BarWidth#, (-1*(#Height#*[MeasureBand2])), #CornerRounding# | Fill Color #Color2# | StrokeWidth #BarStrokeWidth#
+Shape4=Rectangle 81, (#Height# + #Levitate# - #Levitate#*[MeasureBand3]), #BarWidth#, (-1*(#Height#*[MeasureBand3])), #CornerRounding# | Fill Color #Color3# | StrokeWidth #BarStrokeWidth#
+Shape5=Rectangle 108, (#Height# + #Levitate# - #Levitate#*[MeasureBand4]), #BarWidth#, (-1*(#Height#*[MeasureBand4])), #CornerRounding# | Fill Color #Color4# | StrokeWidth #BarStrokeWidth#
+Shape6=Rectangle 135, (#Height# + #Levitate# - #Levitate#*[MeasureBand5]), #BarWidth#, (-1*(#Height#*[MeasureBand5])), #CornerRounding# | Fill Color #Color5# | StrokeWidth #BarStrokeWidth#
+Shape7=Rectangle 162, (#Height# + #Levitate# - #Levitate#*[MeasureBand6]), #BarWidth#, (-1*(#Height#*[MeasureBand6])), #CornerRounding# | Fill Color #Color6# | StrokeWidth #BarStrokeWidth#
+Shape8=Rectangle 189, (#Height# + #Levitate# - #Levitate#*[MeasureBand7]), #BarWidth#, (-1*(#Height#*[MeasureBand7])), #CornerRounding# | Fill Color #Color7# | StrokeWidth #BarStrokeWidth#
+Shape9=Rectangle 216, (#Height# + #Levitate# - #Levitate#*[MeasureBand8]), #BarWidth#, (-1*(#Height#*[MeasureBand8])), #CornerRounding# | Fill Color #Color8# | StrokeWidth #BarStrokeWidth#
+Shape10=Rectangle 243,(#Height# + #Levitate# - #Levitate#*[MeasureBand8]), #BarWidth#, (-1*(#Height#*[MeasureBand8])), #CornerRounding# | StrokeWidth #BarStrokeWidth# | Fill Color #Color8#
+Shape11=Rectangle 270,(#Height# + #Levitate# - #Levitate#*[MeasureBand7]), #BarWidth#, (-1*(#Height#*[MeasureBand7])), #CornerRounding# | StrokeWidth #BarStrokeWidth# | Fill Color #Color7#
+Shape12=Rectangle 297,(#Height# + #Levitate# - #Levitate#*[MeasureBand6]), #BarWidth#, (-1*(#Height#*[MeasureBand6])), #CornerRounding# | StrokeWidth #BarStrokeWidth# | Fill Color #Color6#
+Shape13=Rectangle 324,(#Height# + #Levitate# - #Levitate#*[MeasureBand5]), #BarWidth#, (-1*(#Height#*[MeasureBand5])), #CornerRounding# | StrokeWidth #BarStrokeWidth# | Fill Color #Color5#
+Shape14=Rectangle 351,(#Height# + #Levitate# - #Levitate#*[MeasureBand4]), #BarWidth#, (-1*(#Height#*[MeasureBand4])), #CornerRounding# | StrokeWidth #BarStrokeWidth# | Fill Color #Color4#
+Shape15=Rectangle 378,(#Height# + #Levitate# - #Levitate#*[MeasureBand3]), #BarWidth#, (-1*(#Height#*[MeasureBand3])), #CornerRounding# | StrokeWidth #BarStrokeWidth# | Fill Color #Color3#
+Shape16=Rectangle 405,(#Height# + #Levitate# - #Levitate#*[MeasureBand2]), #BarWidth#, (-1*(#Height#*[MeasureBand2])), #CornerRounding# | StrokeWidth #BarStrokeWidth# | Fill Color #Color2#
+Shape17=Rectangle 432,(#Height# + #Levitate# - #Levitate#*[MeasureBand1]), #BarWidth#, (-1*(#Height#*[MeasureBand1])), #CornerRounding# | StrokeWidth #BarStrokeWidth# | Fill Color #Color1#
+Shape18=Rectangle 459,(#Height# + #Levitate# - #Levitate#*[MeasureBand0]), #BarWidth#, (-1*(#Height#*[MeasureBand0])), #CornerRounding# | StrokeWidth #BarStrokeWidth# | Fill Color #Color0#
+TransformationMatrix=(Cos(-#Angle#%360*Pi/180));(-Sin(-#Angle#%360*Pi/180));(Sin(-#Angle#%360*Pi/180));(Cos(-#Angle#%360*Pi/180));(((90<#Angle#%360)&(#Angle#%360<270)?Abs(Cos(#Angle#%360*Pi/180))*(2*(#BarWidth#+#BarGap#)*#Bands#-#BarGap#):0)+((0<#Angle#%360)&(#Angle#%360<180)?Abs(Sin(#Angle#%360*Pi/180))*(#Height# + #Levitate#):0));(((180<#Angle#%360)&(#Angle#%360<360)?Abs(Sin(#Angle#%360*Pi/180))*((#BarWidth#+#BarGap#)*2*#Bands#-#BarGap#):0)+((90<#Angle#%360)&(#Angle#%360<270)?Abs(Cos(#Angle#%360*Pi/180))*(#Height# + #Levitate#):0))
+DynamicVariables = 1
