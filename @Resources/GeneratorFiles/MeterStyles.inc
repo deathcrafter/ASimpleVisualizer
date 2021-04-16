@@ -1,5 +1,5 @@
 [SubtitleStyle]
-FontSize=17
+FontSize=(17*[#Scale])
 FontFace=Segoe UI
 FontColor=fffffe
 FontWeight=600
@@ -9,7 +9,7 @@ DynamicVariables=1
 Group=Scroll
 
 [ContentStyle]
-FontSize=15
+FontSize=(15*[#Scale])
 FontFace=Segoe UI
 FontColor=94a1b2
 StringAlign=Left
@@ -20,7 +20,7 @@ Group=Scroll
 
 
 [ButtonTextStyle]
-FontSize=12
+FontSize=(12*[#Scale])
 FontFace=Segoe UI
 FontColor=fffffe
 FontWeight=500

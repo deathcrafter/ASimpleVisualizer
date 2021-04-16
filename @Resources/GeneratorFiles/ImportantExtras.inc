@@ -1,8 +1,8 @@
 [Generate]
 Meter=Shape
-X=75
-Y=600
-Shape=Rectangle 0,0,100,25,5 | StrokeWidth 2 | Stroke Color 72757e | Extend ColorA
+X=(75*[#Scale])
+Y=(600*[#Scale])
+Shape=Rectangle 0,0,(100*[#Scale]),(25*[#Scale]),(5*[#Scale]) | StrokeWidth (2*[#Scale]) | Stroke Color 72757e | Extend ColorA
 ColorA= Fill Color 2cb67d00
 MouseOverAction=[!SetOption #CURRENTSECTION# ColorA "Fill Color 2cb67d"][!UpdateMeter #CURRENTSECTION#][!Redraw]
 MouseLeaveAction=[!SetOption #CURRENTSECTION# ColorA "Fill Color 2cb67d00"][!UpdateMeter #CURRENTSECTION#][!Redraw]
@@ -10,10 +10,10 @@ LeftMouseUpAction=[!CommandMeasure "SuperScript" "CalculateAudioBands()"][!Comma
 
 [GenerateText]
 Meter=String
-X=125
-Y=11r
+X=(127*[#Scale])
+Y=(12*[#Scale])r
 Text=Generate :)
-FontSize=12
+FontSize=(12*[#Scale])
 FontFace=Segoe UI
 FontColor=fffffe
 FontWeight=500
@@ -22,10 +22,10 @@ AntiAlias=1
 
 [Refresh]
 Meter=Shape
-Shape=Rectangle 0,0,100,25,5 | StrokeWidth 2 | Stroke Color 72757e | Extend ColorA
+Shape=Rectangle 0,0,(100*[#Scale]),(25*[#Scale]),(5*[#Scale]) | StrokeWidth (2*[#Scale]) | Stroke Color 72757e | Extend ColorA
 ColorA= Fill Color 2cb67d00
-X=315
-Y=-11r
+X=(315*[#Scale])
+Y=(-12*[#Scale])r
 ColorA= Fill Color 2cb67d00
 MouseOverAction=[!SetOption #CURRENTSECTION# ColorA "Fill Color 2cb67d"][!UpdateMeter #CURRENTSECTION#][!Redraw]
 MouseLeaveAction=[!SetOption #CURRENTSECTION# ColorA "Fill Color 2cb67d00"][!UpdateMeter #CURRENTSECTION#][!Redraw]
@@ -34,10 +34,10 @@ DynamicVariables=1
 
 [RefreshText]
 Meter=String
-X=365
-Y=11r
+X=(367*[#Scale])
+Y=(12*[#Scale])r
 Text="Apply :)"
-FontSize=12
+FontSize=(12*[#Scale])
 FontFace=Segoe UI
 FontColor=fffffe
 FontWeight=500
@@ -49,16 +49,16 @@ AntiAlias=1
 Measure=Plugin
 Plugin=ActionTimer
 ActionList1=Repeat Act, 30, 12
-Act=[!SetVariable TypeContainerHeight "(Clamp(#TypeContainerHeight#+12, 0, 133))"][!UpdateMeasure ActionTimer][!UpdateMeter TypesContainer][!Redraw]
+Act=[!SetVariable TypeContainerHeight "(Clamp(#TypeContainerHeight#+12, 0, 133*[#Scale]))"][!UpdateMeasure ActionTimer][!UpdateMeter TypesContainer][!Redraw]
 IgnoreWarnings=1
 DynamicVariables=1
 
 [TypesContainer]
 Meter=String
-X=([TypeBox:X]-1)
-Y=([TypeBox:Y]+23)
-H=[#TypeContainerHeight]
-W=102
+X=([TypeBox:X]-(1*[#Scale]))
+Y=([TypeBox:Y]+(23*[#Scale]))
+H=[#TypeContainerHeight]*[#Scale]
+W=(102*[#Scale])
 SolidColor=0,0,0
 UpdateDivider=-1
 DynamicVariables=1
@@ -67,7 +67,7 @@ Group=Scroll
 [MeasureTypeContainerHider]
 Measure=Calc
 Formula=[TypesContainer:Y]
-ifCondition=MeasureTypeContainerHider <= 70
+ifCondition=MeasureTypeContainerHider <= (70*[#Scale])
 ifTrueAction=[!SetVariable TypeContainerHeight "0"][!UpdateMeter TypesContainer][!Redraw]
 UpdateDivider=-1
 DynamicVariables=1
@@ -75,9 +75,9 @@ Group=Hiders
 
 [TypesBackGround]
 Meter=Shape
-X=1
-Y=7
-Shape=Rectangle 0,0,100,125,5 | Fill Color 16161a | StrokeWidth 2
+X=(1*[#Scale])
+Y=(7*[#Scale])
+Shape=Rectangle 0,0,(100*[#Scale]),(125*[#Scale]),(5*[#Scale]) | Fill Color 16161a | StrokeWidth (2*[#Scale])
 Container=TypesContainer
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [TypeHighLightStyle]
@@ -88,55 +88,55 @@ MouseLeaveAction=[!SetOption #CURRENTSECTION# ColorA "Fill Color 7f5af000"][!Upd
 
 [Type1Highlight]
 Meter=Shape
-X=1
-Y=7
-Shape=Rectangle 1,0,98,25,5 | StrokeWidth 0 | Extend ColorA
-Shape2=Rectangle 1,10,98,15
+X=(1*[#Scale])
+Y=(7*[#Scale])
+Shape=Rectangle (1*[#Scale]),0,(98*[#Scale]),(25*[#Scale]),(5*[#Scale]) | StrokeWidth 0 | Extend ColorA
+Shape2=Rectangle (1*[#Scale]),(10*[#Scale]),(98*[#Scale]),(15*[#Scale])
 Shape3=Combine Shape | Union Shape2
 MeterStyle=TypeHighLightStyle
 LeftMouseUpAction=[!WriteKeyValue Variables BarType "Normal" "#@#Variables\GlobalVariables.inc"][!SetVariable TypeContainerHeight "0"][!Refresh]
 
 [Type2Highlight]
 Meter=Shape
-X=1
+X=(1*[#Scale])
 Y=R
-Shape=Rectangle 1,0,98,25 | StrokeWidth 0 | Extend ColorA
+Shape=Rectangle (1*[#Scale]),0,(98*[#Scale]),(25*[#Scale]) | StrokeWidth 0 | Extend ColorA
 MeterStyle=TypeHighLightStyle
 LeftMouseUpAction=[!WriteKeyValue Variables BarType "MirrorY" "#@#Variables\GlobalVariables.inc"][!SetVariable TypeContainerHeight "0"][!Refresh]
 
 [Type3Highlight]
 Meter=Shape
-X=1
+X=(1*[#Scale])
 Y=R
-Shape=Rectangle 1,0,98,25  | StrokeWidth 0| Extend ColorA
+Shape=Rectangle (1*[#Scale]),0,(98*[#Scale]),(25*[#Scale])  | StrokeWidth 0| Extend ColorA
 MeterStyle=TypeHighLightStyle
 LeftMouseUpAction=[!WriteKeyValue Variables BarType "MirrorX" "#@#Variables\GlobalVariables.inc"][!SetVariable TypeContainerHeight "0"][!Refresh]
 
 [Type4Highlight]
 Meter=Shape
-X=1
+X=(1*[#Scale])
 Y=R
-Shape=Rectangle 1,0,98,25  | StrokeWidth 0| Extend ColorA
+Shape=Rectangle (1*[#Scale]),0,(98*[#Scale]),(25*[#Scale])  | StrokeWidth 0| Extend ColorA
 MeterStyle=TypeHighLightStyle
 LeftMouseUpAction=[!WriteKeyValue Variables BarType "MirrorXY" "#@#Variables\GlobalVariables.inc"][!SetVariable TypeContainerHeight "0"][!Refresh]
 
 [Type5Highlight]
 Meter=Shape
-X=1
+X=(1*[#Scale])
 Y=R
-Shape=Rectangle 1,0,98,15  | StrokeWidth 0| Extend ColorA
-Shape2=Rectangle 1,0,98,25,5
+Shape=Rectangle (1*[#Scale]),0,(98*[#Scale]),(15*[#Scale])  | StrokeWidth 0| Extend ColorA
+Shape2=Rectangle (1*[#Scale]),0,(98*[#Scale]),(25*[#Scale]),5
 Shape3=Combine Shape | Union Shape2
 MeterStyle=TypeHighLightStyle
 LeftMouseUpAction=[!ShowMeterGroup ReflectionWarning][!Redraw]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 [TypeTextStyle]
-FontSize=12
+FontSize=(12*[#Scale])
 FontFace=Segoe UI
 FontColor=fffffe
-X=50
-Y=25r
+X=(50*[#Scale])
+Y=(26*[#Scale])r
 AntiAlias=1
 Container=TypesContainer
 StringAlign=CenterCenter
@@ -144,7 +144,7 @@ StringAlign=CenterCenter
 [Type1Text]
 Meter=String
 Text=Normal
-Y=18
+Y=(18*[#Scale])
 MeterStyle=TypeTextStyle
 
 [Type2Text]

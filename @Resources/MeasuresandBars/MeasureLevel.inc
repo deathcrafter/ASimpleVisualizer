@@ -1,0 +1,15 @@
+[MeasureAudio]
+Measure=Plugin
+Plugin=AudioLevel
+Port=[#Port]
+Channel=[&MeasureAudioSource]
+ID=[#ID]
+FFTSize=#FFTSize#
+FFTAttack=#FFTAttack#
+FFTDecay=#FFTDecay#
+Bands=#Bands#
+FreqMax=#MaxFrequency#
+FreqMin=#MinFrequency#
+Sensitivity=#Sensitivity#
+FFTOverlap=1024
+InvertMeasure=#InvertMeasure#

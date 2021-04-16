@@ -1,6 +1,6 @@
 [Variables]
 ;Visualizer Variables
-Bands=62
+Bands=19
 
 Height=200
 
@@ -10,13 +10,13 @@ BarGap=7
 
 BarStrokeWidth=0
 
-CornerRounding=7
+CornerRounding=5
 
 Levitate=0
 
 MirrorDistance=4
 
-Angle=0
+Angle=90
 
 ;Color Variables
 ColorCount=2
@@ -37,13 +37,13 @@ EquaDis=1
 Type0=[!WriteKeyValue Variables EquaType "Analyzer" "#@#Variables\GlobalVariables.inc"][!WriteKeyValue Variables EquaDis "1" "#@#Variables\GlobalVariables.inc"]
 Type1=[!WriteKeyValue Variables EquaType "Level" "#@#Variables\GlobalVariables.inc"][!WriteKeyValue Variables EquaDis "0" "#@#Variables\GlobalVariables.inc"]
 
-Port=Input
+Port=Output
 Channel=Auto
 AnaPort
 ;AudioLevel Measure Variables
 
 FFTSize=2048
-FFTAttack=15
+FFTAttack=10
 FFTDecay=100
 Sensitivity=37
 MinFrequency=20
@@ -51,7 +51,7 @@ MaxFrequency=20000
 InvertMeasure=1
 
 
-ID={0.0.0.00000000}.{51146494-97ef-4f3f-a95a-2b9dec1ae019}
+ID=
 DeviceName=
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 AnaPortVar=1
@@ -68,14 +68,14 @@ FreqMax=2000
 ; ------------
 MaxSensitivity=35
 MinSensitivity=9
-Attack=30
-Decay=150
+Attack=20
+Decay=100
 ; ------------
 BinWidth=15
 OverlapBoost=5
 CascadesCount=2
 ; ------------
-BlurRadius=0.5
+BlurRadius=2
 
 
 

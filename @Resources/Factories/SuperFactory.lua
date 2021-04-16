@@ -1,6 +1,6 @@
 function CalculateAudioBands()
 	local num = SKIN:GetVariable("Bands")
-	local measure = SKIN:GetVariable("measuretype")
+	local measure = SKIN:GetVariable("EquaDis")
 	local file = io.open(SKIN:MakePathAbsolute("@Resources\\MeasuresandBars\\Measures.inc"), "w")
 	
 	local t = {}
