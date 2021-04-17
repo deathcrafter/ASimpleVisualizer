@@ -56,3 +56,7 @@ Well, before I dive into the how to, I would like to thank the people who made t
   8. If you are mirroring along Y then formula for **height** would be:
 > **(_height_ - _mirrordistance_ - 2 x _levitation_)**
 4. I think this is the gist of it. Read the [wiki](https://github.com/deathcrafter/ASimpleVisualizer/wiki) for more tips and tricks(like the one in the picture:wink:). 
+## Contact me
+Contact me here:
+ 1. Email : __death.crafter02@gmail.com__
+ 2. Or just create an issue.
