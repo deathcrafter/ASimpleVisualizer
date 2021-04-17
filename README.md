@@ -30,7 +30,7 @@ Well, before I dive into the how to, I would like to thank the people who made t
 ## Installation
 1. Install Rainmeter if you haven't yet.
 2. Download the rmskin file from releases and install.
-3. **If you want to install manually** then download the zip and place it in the Documents\Rainmeter\Skins\ folder and download the plugins used(you can find then in @Resources folder in side the skin) and place them in Documents\Rainmeter\Skins\@Vault\. I don't recommend this way though.
+3. **If you want to install manually** then download the zip and place it in the Documents\Rainmeter\Skins\ folder and place the plugins used(you can find then in @Resources folder in side the skin) in Documents\Rainmeter\Skins\@Vault\. I don't recommend this way though.
 
 ## How to make an Image Visualizer
 1. First you have to know the __*aspect ratio*__ of the image you want to make a viualizer of. You can do this by looking at the resolution of the image. E.g. if an image is of 1920x1080 resolution then the aspect ratio is 16:9, for 800x600 it is 4:3 and so on.
