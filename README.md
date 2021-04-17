@@ -3,7 +3,6 @@
 A Rainmeter visualizer.
 
 ## Screenshots
-
 ![Screenshot (367)](https://user-images.githubusercontent.com/77834863/115127377-988a4580-9ff3-11eb-9973-86bba49a898e.png)
 ![Screenshot (402)](https://user-images.githubusercontent.com/77834863/115127440-2403d680-9ff4-11eb-9f2d-1edc96d7f5ec.png)
 ![Screenshot (448)](https://user-images.githubusercontent.com/77834863/115127678-059eda80-9ff6-11eb-8c5c-70066044ebc0.png)
