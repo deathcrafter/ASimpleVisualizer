@@ -55,4 +55,4 @@ Well, before I dive into the how to, I would like to thank the people who made t
 > **(_height_ - _levitation_)**
   8. If you are mirroring along Y then formula for **height** would be:
 > **(_height_ - _mirrordistance_ - 2 x _levitation_)**
-4. I think this is the gist of it. Read the wiki for more tips and tricks(like the one in the picture:wink:). 
+4. I think this is the gist of it. Read the [wiki](https://github.com/deathcrafter/ASimpleVisualizer/wiki) for more tips and tricks(like the one in the picture:wink:). 
