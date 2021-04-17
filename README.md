@@ -37,6 +37,8 @@ Well, before I dive into the how to, I would like to thank the people who made t
 2. Then you have to choose what size you want you visualizer to be. But here is the caveat, you can not make it just anything. You have to make the visualizer so that it preserves the aspect ratio of the image which makes sure that that the image doesn't look weirdly misshapen.
 3. Then comes the math.
    1. Before starting here is a list of terms used, you can find these settings in Visualizer Settings page of Generator.
+   - **choosenwidth** : width you chose for displaying the image visualizer
+   - **choosenheight** : height you choose according to width while preserving the image's aspect ratio
    - **barcount** : number of bars to generate
    - **barwidth** : width of individual bars
    - **bargap** : distance between consecutive bars
@@ -51,9 +53,9 @@ Well, before I dive into the how to, I would like to thank the people who made t
    - > **(_choosenwidth_ + _bargap_)/(_barwidth_ + _bargap_)**
    6. Note:If you have chosen to mirror along X or in simple terms using type MirrorX then use half the number of bars. 
    7. Now about height, if you are using Normal type without mirroring then formula for **height** would be:
-   - > **(_height_ - _levitation_)**
+   - > **(_choosenheight_ - _levitation_)**
    8. If you are mirroring along Y then formula for **height** would be:
-   - > **(_height_ - _mirrordistance_ - 2 x _levitation_)**
+   - > **(_choosenheight_ - _mirrordistance_ - 2 x _levitation_)**
 4. I think this is the gist of it. Read the [wiki](https://github.com/deathcrafter/ASimpleVisualizer/wiki) for more tips and tricks(like the one in the picture:wink:). 
 ## Contact me
 Contact me here:
