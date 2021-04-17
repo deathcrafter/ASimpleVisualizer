@@ -11,7 +11,7 @@ A Rainmeter visualizer. That's all it is.
 
 2. Options to choose from different configurations of visualizers, like mirrored along X or Y or both. There is also reflection which looks beautiful(at the cost of a little bit more CPU usage depending on your CPU), and more on the way.
  
-3. And you get a nice settings menu to change literally everything that is changeable( but I recommend some research on AudioAnalyzer before changing the 
+3. And you get a nice settings menu to change literally everything that is changeable (but I recommend some research on AudioAnalyzer before changing the values randomly. This [link](https://li7xi.github.io/AudioAnalyzerDocs/#/) will take you to the docs.
 4. You get an option to make an image your visualizer. Yup, it can be your favourite waifu, it can be your bae. How? We will get to it later.
 5. You get a built in gradient generator which creates gradients based on the colors you input manually or using the color picker.
 6. I think that is all for now. More updates on way.
