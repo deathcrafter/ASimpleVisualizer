@@ -2,7 +2,7 @@
 ## Description
 A Rainmeter visualizer. That's all it is.
 ## Screenshots
-![Screenshot (418)](https://user-images.githubusercontent.com/77834863/115127589-3cc0bc00-9ff5-11eb-92ad-1efde7adb93a.png)
+![Screenshot (460)](https://user-images.githubusercontent.com/77834863/115128796-fcb20700-9ffd-11eb-9dea-d0108e77e9a5.png)
 ![Screenshot (367)](https://user-images.githubusercontent.com/77834863/115127377-988a4580-9ff3-11eb-9973-86bba49a898e.png)
 ![Screenshot (402)](https://user-images.githubusercontent.com/77834863/115127440-2403d680-9ff4-11eb-9f2d-1edc96d7f5ec.png)
 ![Screenshot (448)](https://user-images.githubusercontent.com/77834863/115127678-059eda80-9ff6-11eb-8c5c-70066044ebc0.png)
