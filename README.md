@@ -27,15 +27,15 @@ More coming!
 2. Now you have to choose the visualizer width and height **such that it preserves the aspect ratio of the image** and the image doesn't look weirdly misshapen.
 3. The calculation part:
    1. _Before starting here is a list of terms used, you can find these settings in Visualizer Settings page of Generator._
-   - **choosenwidth** : width you chose for the visualizer
-   - **choosenheight** : height you chose for visualizer **with respect to width while preserving the image's aspect ratio**
-   - **barcount** : number of bars to generate(named bands in settings)
-   - **barwidth** : width of individual bars
-   - **bargap** : distance between consecutive bars
-   - **height** : height of bar
-   - **levitation** : the amount your bars go up along with equalizer
-   - **mirrordistanceY** : the distance between top and bottom bars when mirrored along Y or simply put, MirrorY is used
-   - **mirrordistanceX** : the distance between mirrored bars whie using MirrorX
+   - > **choosenwidth** : width you chose for the visualizer
+   - > **choosenheight** : height you chose for visualizer **with respect to width while preserving the image's aspect ratio**
+   - > **barcount** : number of bars to generate(named bands in settings)
+   - > **barwidth** : width of individual bars
+   - > **bargap** : distance between consecutive bars
+   - > **height** : height of bar
+   - > **levitation** : the amount your bars go up along with equalizer
+   - > **mirrordistanceY** : the distance between top and bottom bars when mirrored along Y or simply put, MirrorY is used
+   - > **mirrordistanceX** : the distance between mirrored bars whie using MirrorX
    2. _First choose something you want to keep constant. E.g. **barwidth**, or **barcount**._
    3. _Then choose the **bargap**.(I would reccommend to keep it small because you wouldn't want your pictures half empty.)_
    4. _So if you chose to keep the **barcount** constant, formula for **barwidth** will be:_
