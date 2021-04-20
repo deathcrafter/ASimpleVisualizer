@@ -39,7 +39,7 @@ More coming!
    2. _First choose something you want to keep constant. E.g. **barwidth**, or **barcount**._
    3. _Then choose the **bargap**.(I would reccommend to keep it small because you wouldn't want your pictures half empty.)_
    4. _So if you chose to keep the **barcount** constant, formula for **barwidth** will be:_
-   - > **(_choosenwidth_ + (_bargap_) x (_barcount - 1_))**/**_barcount_**
+   - > **(_choosenwidth_ - (_bargap_) x (_barcount - 1_))**/**_barcount_**
    5. _If you chose to keep **barwidth** constant, formula for **barcount** will be:_
    - > **(_choosenwidth_ + _bargap_)/(_barwidth_ + _bargap_)**
    6. _If you have chosen to mirror along X or in simple terms using type MirrorX, you have to use half the number of bars you intend to have or get using the formulas and formula would be,_ 
