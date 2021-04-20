@@ -42,7 +42,7 @@ More coming!
    - > **(_choosenwidth_ + (_bargap_) x (_barcount - 1_))**/**_barcount_**
    5. _If you chose to keep **barwidth** constant, formula for **barcount** will be:_
    - > **(_choosenwidth_ + _bargap_)/(_barwidth_ + _bargap_)**
-   6. _Note:**If you have chosen to mirror along X or in simple terms using type MirrorX, formula would be,**_ 
+   6. _If you have chosen to mirror along X or in simple terms using type MirrorX, you have to use half the number of bars you intend to have or get using the formulas and formula would be,_ 
    - > **(_choosenwidth_ - _mirrorrdistanceX_...)**
    7. _Now about height, if you are using Normal type without mirroring then formula for **height** would be:_
    - > **(_choosenheight_ - _levitation_)**
