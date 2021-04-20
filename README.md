@@ -3,13 +3,6 @@
 A Rainmeter visualizer.
 
 ## Screenshots
-![Screenshot (460)](https://user-images.githubusercontent.com/77834863/115135856-5b48a680-a039-11eb-9154-f70cc086e543.png)
-
-![Screenshot (367)](https://user-images.githubusercontent.com/77834863/115127377-988a4580-9ff3-11eb-9973-86bba49a898e.png)
-
-![Screenshot (402)](https://user-images.githubusercontent.com/77834863/115127440-2403d680-9ff4-11eb-9f2d-1edc96d7f5ec.png)
-
-![Screenshot (448)](https://user-images.githubusercontent.com/77834863/115127678-059eda80-9ff6-11eb-8c5c-70066044ebc0.png)
 
 ## Features
 
@@ -41,18 +34,20 @@ More coming!
    - **bargap** : distance between consecutive bars
    - **height** : height of bar
    - **levitation** : the amount your bars go up along with equalizer
-   - **mirrordistance** : the distance between top and bottom bars when mirrored along Y or simply put, MirrorY is used
+   - **mirrordistanceY** : the distance between top and bottom bars when mirrored along Y or simply put, MirrorY is used
+   - **mirrordistanceX** : the distance between mirrored bars whie using MirrorX
    2. _First choose something you want to keep constant. E.g. **barwidth**, or **barcount**._
    3. _Then choose the **bargap**.(I would reccommend to keep it small because you wouldn't want your pictures half empty.)_
    4. _So if you chose to keep the **barcount** constant, formula for **barwidth** will be:_
    - > **(_choosenwidth_ + (_bargap_) x (_barcount - 1_))**/**_barcount_**
    5. _If you chose to keep **barwidth** constant, formula for **barcount** will be:_
    - > **(_choosenwidth_ + _bargap_)/(_barwidth_ + _bargap_)**
-   6. _Note:**If you have chosen to mirror along X or in simple terms using type MirrorX then use half the number of bars.**_
+   6. _Note:**If you have chosen to mirror along X or in simple terms using type MirrorX, formula would be,**_ 
+   - > **(_choosenwidth_ - _mirrorrdistanceX_...)**
    7. _Now about height, if you are using Normal type without mirroring then formula for **height** would be:_
    - > **(_choosenheight_ - _levitation_)**
    8. _If you are mirroring along Y then formula for **height** would be:_
-   - > **(_choosenheight_ - _mirrordistance_ - 2 x _levitation_)**
+   - > **(_choosenheight_ - _mirrordistanceY_ - 2 x _levitation_)**
 4. _The output may not be completely accurate as you can not be pixel perfect._
 5. _Read the [wiki](https://github.com/deathcrafter/ASimpleVisualizer/wiki) for more tips and tricks._
 
@@ -63,4 +58,4 @@ Thank you to:
 * [@sctanf](https://github.com/sctanf) for his TransformationMatrix code.
 * [@EnhancedJax](https://github.com/EnhancedJax) for the ideas and testing.
 * [AudioAnalyzer](https://github.com/d-uzlov/Rainmeter-Plugins-by-rxtd]) plugin by rxtd.
-* [@sceleri](https://github.com/sceleri) for his contribution to this repo.
+* [@sceleri](https://github.com/sceleri) for his contribution to this repo and the [settings menu](https://github.com/sceleri/settings). 
