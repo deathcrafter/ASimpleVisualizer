@@ -51,6 +51,12 @@ More coming!
 4. _The output may not be completely accurate as you can not be pixel perfect._
 5. _Read the [wiki](https://github.com/deathcrafter/ASimpleVisualizer/wiki) for more tips and tricks._
 
+## To-Do List:
+- [ ] Fix minimum height(Use clamp)
+- [ ] Add community theme support
+- [ ] Add live gradient in experimental section
+- [ ] Add Gradient support for stroke
+
 ## Credits
 
 Thank you to: 
