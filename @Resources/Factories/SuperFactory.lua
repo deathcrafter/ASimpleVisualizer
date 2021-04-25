@@ -46,6 +46,8 @@ function DrawNormal()
     local angle= SKIN:GetVariable("Angle")
 
 	local cornerRadius= SKIN:GetVariable("CornerRounding")
+
+	local minimumHeight= SKIN:GetVariable("MinimumHeight")
     --;____________________________________________________________________________________________
 
     --In this section we calculate the position of individual bars, height and width of total shape 
@@ -54,7 +56,7 @@ function DrawNormal()
 
     local width1= (barWidth+barGap)*bands+2*barStrokeWidth-barGap
 
-    local height1= height+levitate+2*barStrokeWidth
+    local height1= height+levitate+minimumHeight+2*barStrokeWidth
 
     --;____________________________________________________________________________________________
 
@@ -78,14 +80,14 @@ function DrawNormal()
     --The if loop is used to see if we want to use flip. Shapes are drawn according to that.
 
     if flip == '0' then
-        table.insert(t, "Shape= Rectangle "..barStrokeWidth..", ("..height + levitate + barStrokeWidth.." - #Levitate#*[MeasureBand0]),"..barWidth..", ("..(-1*height).."*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth "..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" )
+        table.insert(t, "Shape= Rectangle "..barStrokeWidth..", ("..height + levitate+minimumHeight + barStrokeWidth.." - #Levitate#*[MeasureBand0]),"..barWidth..", ("..(-1*height).."*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth "..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" )
         
         --This for loop draws all the bars we want. Notice that I have kept one bar outside the loop.
         --It is because in Rainmeter Shape meters are declared as Shape, Shape2, Shape3 and so on. The 'Shape1' is skipped.
         --So 'Shape' is inserted the loop and the loop inserts the shapes from Shape2 to the last one.
 		
         for k = 1, bands-1 do
-    	    table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k + barStrokeWidth .. ", ("..height + levitate + barStrokeWidth.." - #Levitate#*[MeasureBand"..k.."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..k.."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth "..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" )	
+    	    table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k + barStrokeWidth .. ", ("..height + levitate+minimumHeight + barStrokeWidth.." - #Levitate#*[MeasureBand"..k.."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..k.."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth "..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" )	
 		end
 	else
         table.insert(t, "Shape= Rectangle 0, ("..barStrokeWidth.."+"..levitate.."*[MeasureBand0]), "..barWidth..", ("..height.."*[MeasureBand0] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth "..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" ) 
@@ -138,13 +140,15 @@ function DrawReflection()
 
 	local cornerRadius= SKIN:GetVariable("CornerRounding")
 
+	local minimumHeight= SKIN:GetVariable("MinimumHeight")
+
     local reflectionDistance= SKIN:GetVariable("ReflectionDistance")
 
     local reflectionPercentage= 1- SKIN:GetVariable("ReflectionPercentage")/100
 
 	local g1xoff= SKIN:GetVariable("Reflection_G1XOffset")
 
-	local g2xoff=SKIN:GetVariables("Reflection_G2XOffset")
+	local g2xoff=SKIN:GetVariable("Reflection_G2XOffset")
 
     --;____________________________________________________________________________________________
 
@@ -154,7 +158,7 @@ function DrawReflection()
 
     local width1= (barWidth+barGap)*bands+w1+2*barStrokeWidth-barGap
 
-    local height1= 2*height+2*levitate+reflectionDistance
+    local height1= 2*height+2*levitate+2*minimumHeight+reflectionDistance
 
     --;____________________________________________________________________________________________
 	local t = {}
@@ -164,12 +168,12 @@ function DrawReflection()
     table.insert(t, "W="..math.abs(math.cos(angle%360*math.pi/180))*width1 + math.abs(math.sin(angle%360*math.pi/180))*height1)
     table.insert(t, "H="..math.abs(math.sin(angle%360*math.pi/180))*width1 + math.abs(math.cos(angle%360*math.pi/180))*height1)
 
-	table.insert(t, "Shape= Rectangle ".. g1xoff + barStrokeWidth..", ("..height + levitate - barStrokeWidth.." - #Levitate#*[MeasureBand0]), "..barWidth..", ("..(-1*height).."*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth " ..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" )
+	table.insert(t, "Shape= Rectangle ".. g1xoff + barStrokeWidth..", ("..height + levitate+minimumHeight - barStrokeWidth.." - #Levitate#*[MeasureBand0]), "..barWidth..", ("..(-1*height).."*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth " ..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" )
 	for k = 1, bands-1 do
-        table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k +g1xoff+ barStrokeWidth .. ", ("..height + levitate.." - #Levitate#*[MeasureBand"..k.."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..k.."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth" ..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" )
+        table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k +g1xoff+ barStrokeWidth .. ", ("..height + levitate+minimumHeight.." - #Levitate#*[MeasureBand"..k.."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..k.."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth" ..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" )
     end
     for j = bands+1, 2*bands do
-        table.insert(t, "Shape" .. j .. "=Rectangle " .. a*(j-bands-1)+ g2xoff + barStrokeWidth.. ",("..height + reflectionDistance.." + #Levitate#*[MeasureBand"..(j-bands-1).."]), "..barWidth..", ("..height.."*[MeasureBand"..(j-bands-1).."] + #MinimumHeight#), "..cornerRadius.." | StrokeWidth " ..barStrokeWidth.." | Fill LinearGradient MyGradient"..(j-bands-1).. " | Stroke LinearGradient MyStrokeGradient\n" .. "MyGradient"..(j-bands-1).." = 90 | #Color"..(j-bands-1).."#,0;0.0 | #Color"..(j-bands-1).."#,0;"..reflectionPercentage.." | #Color"..(j-bands-1).."#, 150;1.0")
+        table.insert(t, "Shape" .. j .. "=Rectangle " .. a*(j-bands-1)+ g2xoff + barStrokeWidth.. ",("..height + reflectionDistance+minimumHeight.." + #Levitate#*[MeasureBand"..(j-bands-1).."]), "..barWidth..", ("..height.."*[MeasureBand"..(j-bands-1).."] + #MinimumHeight#), "..cornerRadius.." | StrokeWidth " ..barStrokeWidth.." | Fill LinearGradient MyGradient"..(j-bands-1).. " | Stroke LinearGradient MyStrokeGradient\n" .. "MyGradient"..(j-bands-1).." = 90 | #Color"..(j-bands-1).."#,0;0.0 | #Color"..(j-bands-1).."#,0;"..reflectionPercentage.." | #Color"..(j-bands-1).."#, 150;1.0")
     end
     table.insert(t, "MyStrokeGradient= 90 | #StrokeColor#,0;0.0 | #StrokeColor#,0;"..reflectionPercentage.." | #StrokeColor#,150;1.0")
     table.insert(t, "TransformationMatrix="..math.cos((-angle%360)*math.pi/180)..";"..(-math.sin((-angle%360*math.pi)/180))..";"..math.sin((-angle%360)*math.pi/180)..";"..math.cos((-angle%360)*math.pi/180)..";(((90<#Angle#%360)&(#Angle#%360<270)?"..math.abs(math.cos(angle%360*math.pi/180))*width1..":0)+((0<#Angle#%360)&(#Angle#%360<180)?"..math.abs(math.sin((angle%360)*math.pi/180))*height1..":0));(((180<#Angle#%360)&(#Angle#%360<360)?"..math.abs(math.sin(angle%360*math.pi/180))*width1..":0)+((90<#Angle#%360)&(#Angle#%360<270)?"..math.abs(math.cos((angle%360)*math.pi/180))*height1..":0))")
@@ -206,6 +210,8 @@ function DrawMirrorY()
 
 	local cornerRadius= SKIN:GetVariable("CornerRounding")
 
+	local minimumHeight= SKIN:GetVariable("MinimumHeight")
+
     local gr1xoff= SKIN:GetVariable("MirrorY_G1XOffset")
 
     local gr2xoff= SKIN:GetVariable("MirrorY_G2XOffset")
@@ -222,7 +228,7 @@ function DrawMirrorY()
 
     local width1= (barWidth+barGap)*bands+2*barStrokeWidth+groupWidth-barGap
 
-    local height1= 2*height+2*levitate+4*barStrokeWidth+gr2yoff
+    local height1= 2*height+2*levitate+4*barStrokeWidth+2*minimumHeight+gr2yoff
 
 	print(height1)
 
@@ -235,20 +241,20 @@ function DrawMirrorY()
     table.insert(t, "H="..math.abs(math.sin(angle%360*math.pi/180))*width1 + math.abs(math.cos(angle%360*math.pi/180))*height1)
 
 	if flip == '0' then
-		table.insert(t, "Shape= Rectangle "..barStrokeWidth+gr1xoff..", ("..height + levitate + gr1yoff + 2*barStrokeWidth.." - #Levitate#*[MeasureBand0]), "..barWidth..", ("..(-1*height).."*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth" ..barStrokeWidth ) 
+		table.insert(t, "Shape= Rectangle "..barStrokeWidth+gr1xoff..", ("..height + levitate+minimumHeight + gr1yoff + 2*barStrokeWidth.." - #Levitate#*[MeasureBand0]), "..barWidth..", ("..(-1*height).."*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth" ..barStrokeWidth ) 
 	   	for k = 1, bands-1 do
-			table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k +barStrokeWidth+ gr1xoff .. ", ("..height + levitate + gr1yoff + 2*barStrokeWidth.." - #Levitate#*[MeasureBand"..k.."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..k.."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth" ..barStrokeWidth )
+			table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k +barStrokeWidth+ gr1xoff .. ", ("..height + levitate+minimumHeight + gr1yoff + 2*barStrokeWidth.." - #Levitate#*[MeasureBand"..k.."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..k.."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth" ..barStrokeWidth )
     	end
     	for j = bands+1, 2*bands do
-    	    table.insert(t, "Shape" .. j .. "=Rectangle " .. a*(j-bands-1)+barStrokeWidth + gr2xoff .. ",("..height + levitate +2*barStrokeWidth+ gr2yoff.. "+ #Levitate#*[MeasureBand"..(j-bands-1).."]), "..barWidth..", ("..height.."*[MeasureBand"..(j-bands-1).."] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color"..(j-bands-1).."# | StrokeWidth" ..barStrokeWidth)
+    	    table.insert(t, "Shape" .. j .. "=Rectangle " .. a*(j-bands-1)+barStrokeWidth + gr2xoff .. ",("..height + levitate+minimumHeight +2*barStrokeWidth+ gr2yoff.. "+ #Levitate#*[MeasureBand"..(j-bands-1).."]), "..barWidth..", ("..height.."*[MeasureBand"..(j-bands-1).."] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color"..(j-bands-1).."# | StrokeWidth" ..barStrokeWidth)
     	end
     else
-		table.insert(t, "Shape= Rectangle "..gr1xoff+barStrokeWidth..", ("..gr1yoff +barStrokeWidth.."+#Levitate#*[MeasureBand0]), "..barWidth..", ((#Height#*[MeasureBand0] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth" ..barStrokeWidth ) 
+		table.insert(t, "Shape= Rectangle "..gr1xoff+barStrokeWidth..", ("..gr1yoff +barStrokeWidth.."+#Levitate#*[MeasureBand0]), "..barWidth..", (#Height#*[MeasureBand0] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth" ..barStrokeWidth ) 
 		for k = 1, bands-1 do
 			table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k +barStrokeWidth+ gr1xoff .. ", ("..gr1yoff+barStrokeWidth.."+#Levitate#*[MeasureBand"..k.."]), "..barWidth..", ("..height.."*[MeasureBand"..k.."] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth" ..barStrokeWidth )
     	end
     	for j = bands+1, 2*bands do
-    	    table.insert(t, "Shape" .. j .. "=Rectangle " .. a*(j-bands-1)+barStrokeWidth + gr2xoff.. ",("..2*(height + levitate) + gr2yoff-barStrokeWidth.." - #Levitate#*[MeasureBand"..(j-bands-1).."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..(j-bands-1).."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color"..(j-bands-1).."# | StrokeWidth" ..barStrokeWidth)
+    	    table.insert(t, "Shape" .. j .. "=Rectangle " .. a*(j-bands-1)+barStrokeWidth + gr2xoff.. ",("..2*(height + levitate+minimumHeight) + gr2yoff-barStrokeWidth.." - #Levitate#*[MeasureBand"..(j-bands-1).."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..(j-bands-1).."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color"..(j-bands-1).."# | StrokeWidth" ..barStrokeWidth)
     	end
 	end
     
@@ -284,6 +290,8 @@ function DrawMirrorX()
 
 	local cornerRadius= SKIN:GetVariable("CornerRounding")
 
+	local minimumHeight= SKIN:GetVariable("MinimumHeight")
+
     --;____________________________________________________________________________________________
 
     local gr1xoff= SKIN:GetVariable("MirrorX_G1XOffset")
@@ -299,7 +307,7 @@ function DrawMirrorX()
 
     local width1= (2*(barWidth+barGap)*bands+4*barStrokeWidth+gr2xoff-barGap)
 
-    local height1= (height+levitate+2*barStrokeWidth+(gr1yoff>gr2yoff and gr1yoff or gr2yoff))
+    local height1= (height+levitate+2*barStrokeWidth+minimumHeight+(gr1yoff>gr2yoff and gr1yoff or gr2yoff))
     --;____________________________________________________________________________________________
 
     local t = {}
@@ -307,12 +315,12 @@ function DrawMirrorX()
     table.insert(t, "W="..math.abs(math.cos(angle%360*math.pi/180))*width1 + math.abs(math.sin(angle%360*math.pi/180))*height1)
     table.insert(t, "H="..math.abs(math.sin(angle%360*math.pi/180))*width1 + math.abs(math.cos(angle%360*math.pi/180))*height1)
     
-    table.insert(t, "Shape= Rectangle "..gr1xoff+barStrokeWidth..", ("..height + levitate + gr1yoff +barStrokeWidth.." - #Levitate#*[MeasureBand0]), "..barWidth..", ("..(-1*height).."*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth " ..barStrokeWidth ) 
+    table.insert(t, "Shape= Rectangle "..gr1xoff+barStrokeWidth..", ("..height + levitate+minimumHeight + gr1yoff +barStrokeWidth.." - #Levitate#*[MeasureBand0]), "..barWidth..", ("..(-1*height).."*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth " ..barStrokeWidth ) 
     for k = 1, bands-1 do
-		table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k + gr1xoff+barStrokeWidth .. ", ("..height + levitate + gr1yoff+barStrokeWidth.." - #Levitate#*[MeasureBand"..k.."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..k.."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth " ..barStrokeWidth )
+		table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k + gr1xoff+barStrokeWidth .. ", ("..height + levitate+minimumHeight + gr1yoff+barStrokeWidth.." - #Levitate#*[MeasureBand"..k.."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..k.."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth " ..barStrokeWidth )
 	end
 	for j = bands+1, 2*bands do
-		table.insert(t, "Shape" .. j .. "=Rectangle " .. a*(j-1) + gr2xoff +barStrokeWidth.. ",("..height + levitate + gr2yoff+barStrokeWidth.." - #Levitate#*[MeasureBand"..(bands*2 - j).."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..(bands*2 - j).."] - #MinimumHeight#), "..cornerRadius.."| Fill Color #Color"..(bands*2 - j).."# | StrokeWidth " ..barStrokeWidth)
+		table.insert(t, "Shape" .. j .. "=Rectangle " .. a*(j-1) + gr2xoff +barStrokeWidth.. ",("..height + levitate+minimumHeight + gr2yoff+barStrokeWidth.." - #Levitate#*[MeasureBand"..(bands*2 - j).."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..(bands*2 - j).."] - #MinimumHeight#), "..cornerRadius.."| Fill Color #Color"..(bands*2 - j).."# | StrokeWidth " ..barStrokeWidth)
 	end
     
     table.insert(t, "TransformationMatrix="..math.cos((-angle%360)*math.pi/180)..";"..(-math.sin((-angle%360*math.pi)/180))..";"..math.sin((-angle%360)*math.pi/180)..";"..math.cos((-angle%360)*math.pi/180)..";(((90<#Angle#%360)&(#Angle#%360<270)?"..math.abs(math.cos(angle%360*math.pi/180))*width1..":0)+((0<#Angle#%360)&(#Angle#%360<180)?"..math.abs(math.sin((angle%360)*math.pi/180))*height1..":0));(((180<#Angle#%360)&(#Angle#%360<360)?"..math.abs(math.sin(angle%360*math.pi/180))*width1..":0)+((90<#Angle#%360)&(#Angle#%360<270)?"..math.abs(math.cos((angle%360)*math.pi/180))*height1..":0))")
@@ -346,6 +354,8 @@ function DrawMirrorXY()
 
 	local cornerRadius= SKIN:GetVariable("CornerRounding")
 
+	local minimumHeight= SKIN:GetVariable("MinimumHeight")
+
     local gr1xoff = SKIN:GetVariable("MirrorXY_G1XOffset")
 
     local gr2xoff = SKIN:GetVariable("MirrorXY_G2XOffset")
@@ -372,7 +382,7 @@ function DrawMirrorXY()
 
 	local groupHeight= (gr1yoff>gr2yoff and gr1yoff or gr2yoff) + (gr3yoff>gr4yoff and gr3yoff or gr4yoff)
 
-    local height1=(2*height+2*levitate+4*barStrokeWidth+groupHeight)
+    local height1=(2*height+2*levitate+4*barStrokeWidth+2*minimumHeight+groupHeight)
 
 	local t = {}
 
@@ -383,19 +393,19 @@ function DrawMirrorXY()
     table.insert(t, "H=" .. math.abs(math.sin(angle%360*math.pi/180))*width1 + math.abs(math.cos(angle%360*math.pi/180))*height1)
 
 	if flip == '0' then
-    	table.insert(t, "Shape= Rectangle "..gr1xoff+barStrokeWidth..",(" .. height + levitate+ gr1yoff +barStrokeWidth .. "-".. levitate .."*[MeasureBand0])," .. barWidth .. ",(".. -1*height .. "*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth ".. barStrokeWidth ) 
+    	table.insert(t, "Shape= Rectangle "..gr1xoff+barStrokeWidth..",(" .. height + levitate+ gr1yoff+minimumHeight +barStrokeWidth .. "-".. levitate .."*[MeasureBand0])," .. barWidth .. ",(".. -1*height .. "*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth ".. barStrokeWidth ) 
 
 		for k = 1, num-1 do
-    	    table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k + gr1xoff+barStrokeWidth .. ",(" .. height + levitate + gr1yoff+barStrokeWidth .. "-".. levitate .."*[MeasureBand"..k.."]),".. barWidth ..",(".. -1*height .."*[MeasureBand"..k.."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth "..barStrokeWidth )
+    	    table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k + gr1xoff+barStrokeWidth .. ",(" .. height + levitate + gr1yoff+minimumHeight+barStrokeWidth .. "-".. levitate .."*[MeasureBand"..k.."]),".. barWidth ..",(".. -1*height .."*[MeasureBand"..k.."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth "..barStrokeWidth )
     	end
     	for j = num+1, 2*num do
-    	    table.insert(t, "Shape" .. j .. "=Rectangle " .. a*(j-1) + gr2xoff+barStrokeWidth .. ",(" .. height + levitate + gr2yoff +barStrokeWidth.. " -".. levitate .."*[MeasureBand"..(num*2 - j).."]),".. barWidth..",(".. -1*height .."*[MeasureBand"..(num*2 - j).."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color"..(num*2 - j).."# | StrokeWidth "..barStrokeWidth)
+    	    table.insert(t, "Shape" .. j .. "=Rectangle " .. a*(j-1) + gr2xoff+barStrokeWidth .. ",(" .. height + levitate + gr2yoff +minimumHeight+barStrokeWidth.. " -".. levitate .."*[MeasureBand"..(num*2 - j).."]),".. barWidth..",(".. -1*height .."*[MeasureBand"..(num*2 - j).."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color"..(num*2 - j).."# | StrokeWidth "..barStrokeWidth)
     	end
 		for i = 2*num+1, 3*num do
-    	    table.insert(t, "Shape" .. i .. "=Rectangle " .. a*(i-2*num-1) + gr3xoff+barStrokeWidth .. ",(".. height + levitate + gr3yoff+barStrokeWidth .."+".. levitate .."*[MeasureBand"..(i-2*num-1).."]),".. barWidth..", ("..height.."*[MeasureBand"..(i-2*num-1).."] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color"..(i-2*num-1).."# | StrokeWidth "..barStrokeWidth)
+    	    table.insert(t, "Shape" .. i .. "=Rectangle " .. a*(i-2*num-1) + gr3xoff+barStrokeWidth .. ",(".. height + levitate + gr3yoff+minimumHeight+barStrokeWidth .."+".. levitate .."*[MeasureBand"..(i-2*num-1).."]),".. barWidth..", ("..height.."*[MeasureBand"..(i-2*num-1).."] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color"..(i-2*num-1).."# | StrokeWidth "..barStrokeWidth)
     	end
     	for h = 3*num+1, 4*num do
-    	    table.insert(t, "Shape" .. h .. "=Rectangle " .. a*(h-2*num-1) + gr4xoff+barStrokeWidth .. ",(".. height + levitate + gr4yoff+barStrokeWidth .."+".. levitate .."*[MeasureBand"..(num*4 - h).."]),"..barWidth..", ("..height.."*[MeasureBand"..(num*4 - h).."] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color"..(num*4 - h).."# | StrokeWidth "..barStrokeWidth)
+    	    table.insert(t, "Shape" .. h .. "=Rectangle " .. a*(h-2*num-1) + gr4xoff+barStrokeWidth .. ",(".. height + levitate + gr4yoff+minimumHeight+barStrokeWidth .."+".. levitate .."*[MeasureBand"..(num*4 - h).."]),"..barWidth..", ("..height.."*[MeasureBand"..(num*4 - h).."] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color"..(num*4 - h).."# | StrokeWidth "..barStrokeWidth)
     	end
 	else
     	table.insert(t, "Shape= Rectangle "..gr1xoff..", ("..gr1yoff.." +#Levitate#*[MeasureBand0]), "..barWidth..", ("..height.."*[MeasureBand0] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth" ..barStrokeWidth) 
@@ -407,10 +417,10 @@ function DrawMirrorXY()
     	    table.insert(t, "Shape" .. j .. "=Rectangle " .. a*(j-1)+gr1xoff.. ",("..gr2yoff.."+#Levitate#*[MeasureBand"..(num*2 - j).."]), "..barWidth..", ("..height.."*[MeasureBand"..(num*2 - j).."] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color"..(num*2 - j).."# | StrokeWidth" ..barStrokeWidth)
     	end
 		for i = 2*num+1, 3*num do
-    	    table.insert(t, "Shape" .. i .. "=Rectangle " .. a*(i-2*num-1)+gr2xoff.. ",("..2*(height+levitate) + gr3yoff.." -".. levitate .."*[MeasureBand"..(i-2*num-1).."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..(i-2*num-1).."] - #MinimumHeight#), "..cornerRadius.."| Fill Color #Color"..(i-2*num-1).."# | StrokeWidth" ..barStrokeWidth)
+    	    table.insert(t, "Shape" .. i .. "=Rectangle " .. a*(i-2*num-1)+gr2xoff.. ",("..2*(height+levitate+minimumHeight) + gr3yoff.." -".. levitate .."*[MeasureBand"..(i-2*num-1).."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..(i-2*num-1).."] - #MinimumHeight#), "..cornerRadius.."| Fill Color #Color"..(i-2*num-1).."# | StrokeWidth" ..barStrokeWidth)
     	end
     	for h = 3*num+1, 4*num do
-    	    table.insert(t, "Shape" .. h .. "=Rectangle " .. a*(h-2*num-1)+gr2xoff.. ",("..2*(height+levitate) + gr4yoff.." -".. levitate .."*[MeasureBand"..(num*4 - h).."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..(num*4 - h).."] - #MinimumHeight#), "..cornerRadius.."| Fill Color #Color"..(num*4 - h).."# | StrokeWidth" ..barStrokeWidth)
+    	    table.insert(t, "Shape" .. h .. "=Rectangle " .. a*(h-2*num-1)+gr2xoff.. ",("..2*(height+levitate+minimumHeight) + gr4yoff.." -".. levitate .."*[MeasureBand"..(num*4 - h).."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..(num*4 - h).."] - #MinimumHeight#), "..cornerRadius.."| Fill Color #Color"..(num*4 - h).."# | StrokeWidth" ..barStrokeWidth)
     	end
 	end
 

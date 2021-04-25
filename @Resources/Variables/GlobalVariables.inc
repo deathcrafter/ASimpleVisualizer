@@ -2,7 +2,7 @@
 Channel=Auto
 ;BarType : Normal | Reflection | MirrorY | MirrorX | MirrorXY
 
-BarType=MirrorXY
+BarType=Normal
 
 ;------------------------------------------------------------------------
 
@@ -53,13 +53,13 @@ CornerRounding=3
 Levitate=0
 
 ;?Toggle | Name Flip
-flipBool=0
+flipBool=1
 
 ;?Integer | Name Angle | Description Angle of visualizer
 Angle=0
 
 ;?Integer | Name Minimum Height | Description Minimun height of Bars
-MinimumHeight=8
+MinimumHeight=100
 
 ;?Integer | Name Update Rate | Description Update Rate of visualizer(Value between 16 to 25 recommended)
 UpdateRate=16
@@ -255,7 +255,7 @@ MirrorY_G2YOffset=0
 MirrorX_G1XOffset=0
 
 ;?String | Name Second X-Offset
-MirrorX_G2XOffset=-590
+MirrorX_G2XOffset=0
 
 ;?String | Name First Y-Offset
 MirrorX_G1YOffset=0
