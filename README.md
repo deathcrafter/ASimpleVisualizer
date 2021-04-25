@@ -37,7 +37,7 @@ Thank you to:
 * [@sctanf](https://github.com/sctanf) for his TransformationMatrix code.
 * [@EnhancedJax](https://github.com/EnhancedJax) for the ideas and testing.
 * [AudioAnalyzer](https://github.com/d-uzlov/Rainmeter-Plugins-by-rxtd]) plugin by rxtd.
-* [@sceleri](https://github.com/sceleri) for the preset themes, beta testing and [Settings](https://github.com/sceleri/settings) skin. 
+* [@sceleri](https://github.com/sceleri) for the preset themes, beta testing and [Settings Generator](https://github.com/sceleri/settings). 
 
 ## To-Do List:
 - [ ] Fix minimum height(Use clamp)
