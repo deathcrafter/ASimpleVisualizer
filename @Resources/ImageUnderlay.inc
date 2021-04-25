@@ -23,7 +23,7 @@ OnDropAction=[!WriteKeyValue ImageCover ImageName "#SKINSPATH#ASimpleVisualizer\
 
 [DragImage]
 Meter=Image
-ImageName=C:\Users\sahoo\OneDrive\Documents\Rainmeter\Skins\ASimpleVisualizer\@Resources\CustomImages\1091433.jpg
+ImageName=C:\Users\sahoo\OneDrive\Documents\Rainmeter\Skins\ASimpleVisualizer\@Resources\CustomImages\51127315707_74af507556_k.jpg
 W=480
 H=270
 PreserveAspectRatio=1

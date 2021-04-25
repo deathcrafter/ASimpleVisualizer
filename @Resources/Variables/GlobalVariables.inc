@@ -2,12 +2,26 @@
 Channel=Auto
 ;BarType : Normal | Reflection | MirrorY | MirrorX | MirrorXY
 
-BarType=Normal
+BarType=MirrorXY
 
 ;------------------------------------------------------------------------
 
 ;@About | Name Settings | Description Control how your visualizer is rendered here.
-;Visualizer Variables
+
+;?Info | Name About | Description A simple visualiser that lets you choose from a variety of types e.g. Mirrored, Image Underlay. And you get a plethora of options to customize the visuaizer to your liking.
+ =
+
+;?Info | Name Credits | Description 1. d-grace for AudioLevel plugin#CRLF#2. rxtd for AudioAnalyzer plugin#CRLF#3. TheAzack9 for FrostedGlass and Drag&Drop plugins#CRLF#4. frgnca for AudioDeviceCmdlets#CRLF#5. Sceleri for the Settings generator and a lot of help#CRLF#6. Jax for design ideas and betatesting 
+ =
+
+;?Info | Name Warnings | Description 1. To get information about audio devices installed on your computer this skin installs a PowerShell cmdlet called AudioDeviceCmdlets by frgnca. It is safe to use but if you don't want to install the cmdlet then refrain from using the install button in Devices page.#CRLF#2. If you are using Image Overlay then you must turn on hardware acceleration from Rainmeter settings.
+ = 
+
+;?Info | Name Rock your desktop! | Description with <3, from death.crafter
+ = 
+
+;?Info | Name Github | Link 1
+https://github.com/deathcrafter/ASimpleVisualizer=https://github.com/deathcrafter/ASimpleVisualizer
 
 ;------------------------------------------------------------------------
 
@@ -18,19 +32,19 @@ BarType=Normal
 ;@Default | Name Visualizer Settings | Icon [\xF61F]
 
 ;?Integer | Name BarCount | Description Number of Bars
-Bands=80
+Bands=30
 
 ;?Integer | Name Height | Description Height of Bars
 Height=300
 
 ;?Integer | Name Bar Width | Description Width of individual Bars
-BarWidth=12
+BarWidth=8
 
 ;?Integer | Name Bar Gap | Description Gap between consecutive Bars
-BarGap=5
+BarGap=10
 
 ;?Integer | Name StrokeWidth | Description Stroke width of Bars
-BarStrokeWidth=0
+BarStrokeWidth=1
 
 ;?Integer | Name Corner Rounding | Description How rounded the bars are
 CornerRounding=3
@@ -38,27 +52,24 @@ CornerRounding=3
 ;?Integer | Name Levitation | Description The amount bars go up while visualizing
 Levitate=0
 
-;?Integer | Name Mirror Distance X | Description The distance between mirrored bars along X
-MirrorDistanceX=0
-
-;?Integer | Name Mirror Distance Y | Description The distance between mirrored bars along Y
-MirrorDistanceY=40
-
 ;?Toggle | Name Flip
-flipBool =0
+flipBool=0
 
 ;?Integer | Name Angle | Description Angle of visualizer
 Angle=0
 
 ;?Integer | Name Minimum Height | Description Minimun height of Bars
-MinimumHeight=5
+MinimumHeight=8
 
 ;?Integer | Name Update Rate | Description Update Rate of visualizer(Value between 16 to 25 recommended)
-UpdateRate=20
+UpdateRate=16
 
 ;________________________________________________________________________
 
 ;@Default | Name Visualizer Types | Icon [\xE74C]
+
+;?Info | Name Visualizer Type
+ =
 
 ;________________________________________________________________________
 
@@ -78,12 +89,12 @@ ImgVis1=[!WriteKeyValue ImageCover Meter "" "#SKINSPATH#ASimpleVisualizer\Visual
 ;@Default | Name Colors | Description Define color of your visualizer or use a gradient of up to 7 colors | Icon [\xE790]
 
 ;?Integer | Name Color Count | Description Number of colors you want in gradient.(for no gradient 1)
-ColorCount=1
+ColorCount=3
 ;?Color | Name Color 1 | Description Default color or first color of gradient
-ColorA0=194,20,24
+ColorA0=0,56,224
 
 ;?Color | Name Color 2
-ColorA1=194,20,24
+ColorA1=19,162,194
 
 ;?Color | Name Color 3
 ColorA2=51,245,29
@@ -100,11 +111,20 @@ ColorA5=255, 127, 0
 ;?Color | Name Color 7
 ColorA6=255, 0, 0
 
+;?Toggle | Name Live Alpha
+LiveAlphaBool=0
+
 ;?Integer | Name Max Alpha
-MaxAlpha=300
+MaxAlpha=400
 
 ;?Integer | Name Min Alpha
-MinAlpha=50
+MinAlpha=100
+
+;?Color | Name Stroke Color
+StrokeColor=0,0,0
+
+;?Integer | Name Stroke Alpha
+StrokeAlpha=170
 
 ;------------------------------------------------------------------------
 
@@ -118,10 +138,10 @@ MinAlpha=50
 DeviceIDbool=0
 
 ;?String | Name DeviceID |
-DeviceID={0.0.0.00000000}.{29a27073-00b5-4dc6-96fc-23e1d9511f7c}
+DeviceID=
 
 ;?String | Name Device Name | Desciption Automatically fetched, changes won't be saved
-DeviceName=Microphone (High Definition Audio Device)
+DeviceName=
 
 ;?Toggle | Name Use Input | Description Use Input as source(AudioAnalyzer recommended, DeviceID overrides this setting)
 IObool=0
@@ -145,11 +165,8 @@ LevelSource1=Input
 ;?Toggle | Name Use AudioAnalyzer
 EquaTypeBool=1
 
-;?Integer | Name Minimum Frequency
-FreqMin=20
-
-;?Integer | Name Maximum Frequency
-FreqMax=16000
+;?String | Name Window Function | Description None :: Hann :: Hamming :: Kaiser :: Chebyshev :: Exponential
+WindowFunction=Kaiser
 
 ;?Integer | Name Maximum Sensititvity
 MaxSensitivity=35
@@ -158,16 +175,22 @@ MaxSensitivity=35
 MinSensitivity=6
 
 ;?Integer | Name Rising Delay | Description in milliseconds
-Attack=30
+Attack=0
 
 ;?Integer | Name Falling Delay | Description in milliseconds
-Decay=100
+Decay=0
 
 ;?Integer | Name Resolution | Description see audioanalyzer docs for more info
 BinWidth=15
 
 ;?Integer | Name Smoothing Level | Description How smooth your visuallizer is
-BlurRadius=2
+BlurRadius=1
+
+;?Integer | Name Minimum Frequency | Description !Note: Please don't change for the time being
+FreqMin=20
+
+;?Integer | Name Maximum Frequency | Description !Note: Please don't change for the time being
+FreqMax=16000
 
 ;________________________________________________________________________
 
@@ -193,3 +216,76 @@ FFTDecay=100
 
 ;?Integer | Name Sensitivity | Description Less values respond to low level audio and high values only to high level audio
 Sensitivity=35
+
+;--------------------------------------------------------------------------------------------------------------------------------------------
+
+;@Topic | Name Experimental | Icon [\xEA86]
+
+;@ | Name Reflection
+
+;?Integer | Name Reflection Percentage | Description Reflection length in terms of percentage of height
+ReflectionPercentage=70
+
+;?String | Name Reflection Distance
+ReflectionDistance=30
+
+;?Integer | Name First X-Offset
+Reflection_G1XOffset=0
+
+;?Integer | Name Second X-Offset
+Reflection_G2XOffset=0
+
+;@ | Name MirrorY Settings
+
+;?String | Name First X-Offset
+MirrorY_G1XOffset=0
+
+;?String | Name Second X-Offset
+MirrorY_G2XOffset=10
+
+;?String | Name First Y-Offset
+MirrorY_G1YOffset=0
+
+;?String | Name Second Y-Offset 
+MirrorY_G2YOffset=0
+
+;@ | Name MirrorX Settings
+
+;?String | Name First X-Offset
+MirrorX_G1XOffset=0
+
+;?String | Name Second X-Offset
+MirrorX_G2XOffset=-590
+
+;?String | Name First Y-Offset
+MirrorX_G1YOffset=0
+
+;?String | Name Second Y-Offset
+MirrorX_G2YOffset=0
+
+;@ | Name MirrorXY Settings
+
+
+;?String | Name First X-Offset
+MirrorXY_G1XOffset=0
+
+;?String | Name Second X-Offset
+MirrorXY_G2XOffset=0
+
+;?String | Name Third X-Offset
+MirrorXY_G3XOffset=0
+
+;?String | Name Fourth X-Offset
+MirrorXY_G4XOffset=0
+
+;?String | Name First Y-Offset
+MirrorXY_G1YOffset=0
+
+;?String | Name Second Y-Offset
+MirrorXY_G2YOffset=0
+
+;?String | Name Third Y-Offset
+MirrorXY_G3YOffset=0
+
+;?String | Name Fourth Y-Offset
+MirrorXY_G4YOffset=0

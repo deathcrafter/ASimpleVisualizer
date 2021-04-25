@@ -96,31 +96,30 @@ Y=0R
 X=0
 SolidColor=0,0,0,0
 
-[MeterApply]
-Meter=Shape
-X=25
-Y=630
-Shape= Rectangle 0, 0, 150, 34, 5 | Fill Color 30,30,30,230 | StrokeColor 000000 | StrokeWidth 2
-LeftMouseUpAction=[!CommandMeasure "SuperScript" "CalculateAudioBands()"][!CommandMeasure "SuperScript" "Draw[#BarType]()"][!CommandMeasure "SuperScript" "CreateColors()"][!Refresh "ASimpleVisualizer\Visualizer" "ASimpleVisualizer.ini"]
-
 
 [StringTickmark]
 Meter=String
-X=5r
-Y=r
+X=30
+Y=650
 Text=[\xE74E]
 MeterStyle=ListIcon | ListDefaultIcon
+LeftMouseUpAction=[!CommandMeasure "SuperScript" "CalculateAudioBands()"][!CommandMeasure "SuperScript" "Draw[#BarType]()"][!CommandMeasure "SuperScript" "CreateColors()"][!Refresh "ASimpleVisualizer\Visualizer" "ASimpleVisualizer.ini"]
+
 
 [StringApply]
 Meter=String
 X=3R
-Y=2r
+Y=-3r
 Text=Apply
 FontColor=255,255,255
+SolidColor=0,0,0,1
+Padding=0,5,5,5
 FontFace=Segoe UI
 FontSize=15
 FontWeight=400
 AntiAlias=1
+LeftMouseUpAction=[!CommandMeasure "SuperScript" "CalculateAudioBands()"][!CommandMeasure "SuperScript" "Draw[#BarType]()"][!CommandMeasure "SuperScript" "CreateColors()"][!Refresh "ASimpleVisualizer\Visualizer" "ASimpleVisualizer.ini"]
+
 
 [CloseShape]
 Meter=Shape
