@@ -5,10 +5,13 @@ Just a visualizer.
 ## Previews
 
 https://user-images.githubusercontent.com/63425016/116005122-40b09780-a60e-11eb-9eb9-c573b80a567d.mp4
+Song: [Self Immolate by King Gizzard & The Lizard Wizard](https://www.youtube.com/watch?v=cmAlQvDQGoI)
 
 https://user-images.githubusercontent.com/63425016/116005124-44441e80-a60e-11eb-885e-ff98bc34a1a5.mp4
+Song: [Rotiesserie (Resauced) by bbno$ & Yung Gravy](https://www.youtube.com/watch?v=qYCb8C6LRkY)
 
 https://user-images.githubusercontent.com/63425016/116005128-46a67880-a60e-11eb-92af-aa95e1af18e3.mp4
+Song: [Comeback by Fox Stenvenson](https://www.youtube.com/watch?v=d_7ZSMTnwVs)
 
 ## Features
 
