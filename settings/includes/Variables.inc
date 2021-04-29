@@ -134,7 +134,7 @@ s_ScrollIndicatorRounding=5
 
 ; Internal
 ;? |
-s_CurrentCategory=0
+s_CurrentCategory=60
 ;? |
 s_ScrollSpeed=50
 ;? |
@@ -159,4 +159,4 @@ s_DebugListColor1=255,0,0,100
 ;? |
 s_DebugIconColor1=255,0,0,100
 
-s_PresetFile=boxes.inc
+s_PresetFile=Boxes.inc

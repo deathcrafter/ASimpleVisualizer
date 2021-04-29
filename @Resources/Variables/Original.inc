@@ -1,8 +1,9 @@
 [Variables]
-Channel=Auto
-;BarType : Normal | Reflection | MirrorY | MirrorX | MirrorXY
 
-BarType=MirrorXY
+;Write preset name and credentials here.
+PresetName=Original
+AuthorName=Unknown
+PresetImage=#@#CustomImages\Original
 
 ;------------------------------------------------------------------------
 
@@ -32,16 +33,16 @@ https://github.com/deathcrafter/ASimpleVisualizer=https://github.com/deathcrafte
 ;@Default | Name Visualizer Settings | Icon [\xF61F]
 
 ;?Integer | Name BarCount | Description Number of Bars
-Bands=40
+Bands=30
 
 ;?Integer | Name Height | Description Height of Bars
-Height=8
+Height=300
 
 ;?Integer | Name Bar Width | Description Width of individual Bars
-BarWidth=28
+BarWidth=12
 
 ;?Integer | Name Bar Gap | Description Gap between consecutive Bars
-BarGap=0
+BarGap=6
 
 ;?Integer | Name StrokeWidth | Description Stroke width of Bars
 BarStrokeWidth=0
@@ -50,7 +51,7 @@ BarStrokeWidth=0
 CornerRounding=0
 
 ;?Integer | Name Levitation | Description The amount bars go up while visualizing
-Levitate=8
+Levitate=0
 
 ;?Toggle | Name Flip
 flipBool=0
@@ -130,6 +131,9 @@ StrokeAlpha=170
 
 ;@ | Name Presets | Description Install community presets or choose from pre-loaded ones | Icon [\xE9A6]
 
+;?Info | Name Preset Name: [#PresetName] | Link 0 | Description Author: [#AuthorName]
+Preset=
+
 ;------------------------------------------------------------------------
 
 ;@Topic | Name Equalizer Settings | Icon [\xF4C3]
@@ -149,6 +153,9 @@ DeviceName=
 
 ;?Toggle | Name Use Input | Description Use Input as source(AudioAnalyzer recommended, DeviceID overrides this setting)
 IObool=0
+
+;?String | Name Channel | Description Values: FL :: FR :: C :: SL :: SR :: BL :: BR :: BC#CRLF#F: Front :: S:Side :: B:Back :: L:Left :: R:Right :: C:Center 
+Channel=Auto
 
 ;AudioAnalyzer
 Default0=DefaultOutput
@@ -265,23 +272,24 @@ MirrorX_G2YOffset=0
 MirrorXY_G1XOffset=0
 
 ;?String | Name Second X-Offset
-MirrorXY_G2XOffset=-1120
+MirrorXY_G2XOffset=220
 
 ;?String | Name Third X-Offset
 MirrorXY_G3XOffset=0
 
 ;?String | Name Fourth X-Offset
-MirrorXY_G4XOffset=-1120
+MirrorXY_G4XOffset=220
 
 ;?String | Name First Y-Offset
 MirrorXY_G1YOffset=0
 
 ;?String | Name Second Y-Offset
-MirrorXY_G2YOffset=28
+MirrorXY_G2YOffset=0
 
 ;?String | Name Third Y-Offset
 MirrorXY_G3YOffset=20
 
 ;?String | Name Fourth Y-Offset
-MirrorXY_G4YOffset=48
+MirrorXY_G4YOffset=20
 
+BarType=MirrorXY

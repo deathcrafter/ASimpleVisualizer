@@ -1,8 +1,10 @@
 [Variables]
-Channel=Auto
-;BarType : Normal | Reflection | MirrorY | MirrorX | MirrorXY
 
-BarType=MirrorXY
+;Write preset name and credentials here.
+PresetName=Mouthalizer
+AuthorName=Sceleri
+PresetImage=#@#CustomImages\Mouthalizer
+
 
 ;------------------------------------------------------------------------
 
@@ -32,25 +34,25 @@ https://github.com/deathcrafter/ASimpleVisualizer=https://github.com/deathcrafte
 ;@Default | Name Visualizer Settings | Icon [\xF61F]
 
 ;?Integer | Name BarCount | Description Number of Bars
-Bands=40
+Bands=500
 
 ;?Integer | Name Height | Description Height of Bars
-Height=8
+Height=150
 
 ;?Integer | Name Bar Width | Description Width of individual Bars
-BarWidth=28
+BarWidth=4
 
 ;?Integer | Name Bar Gap | Description Gap between consecutive Bars
-BarGap=0
+BarGap=-2
 
 ;?Integer | Name StrokeWidth | Description Stroke width of Bars
 BarStrokeWidth=0
 
 ;?Integer | Name Corner Rounding | Description How rounded the bars are
-CornerRounding=0
+CornerRounding=2
 
 ;?Integer | Name Levitation | Description The amount bars go up while visualizing
-Levitate=8
+Levitate=250
 
 ;?Toggle | Name Flip
 flipBool=0
@@ -59,7 +61,7 @@ flipBool=0
 Angle=0
 
 ;?Integer | Name Minimum Height | Description Minimun height of Bars
-MinimumHeight=28
+MinimumHeight=0
 
 ;?Integer | Name Update Rate | Description Update Rate of visualizer(Value between 16 to 25 recommended)
 UpdateRate=16
@@ -89,46 +91,42 @@ ImgVis1=[!WriteKeyValue ImageCover Meter "" "#SKINSPATH#ASimpleVisualizer\Visual
 ;@Default | Name Colors | Description Define color of your visualizer or use a gradient of up to 7 colors | Icon [\xE790]
 
 ;?Integer | Name Color Count | Description Number of colors you want in gradient.(for no gradient 1)
-ColorCount=7
+ColorCount=3
 ;?Color | Name Color 1 | Description Default color or first color of gradient
-ColorA0=255, 0, 0
+ColorA0=0,56,224
 
 ;?Color | Name Color 2
-ColorA1=255, 127, 0
+ColorA1=19,162,194
 
 ;?Color | Name Color 3
-ColorA2=255,145,0
+ColorA2=51,245,29
 
 ;?Color | Name Color 4
 ColorA3=238,255,0
 
 ;?Color | Name Color 5
-ColorA4=51,245,29
+ColorA4=255,145,0
 
 ;?Color | Name Color 6
-ColorA5=19,162,194
+ColorA5=255, 127, 0
 
 ;?Color | Name Color 7
-ColorA6=0,56,224
+ColorA6=255, 0, 0
 
 ;?Toggle | Name Live Alpha
-LiveAlphaBool=1
+LiveAlphaBool=0
 
 ;?Integer | Name Max Alpha
-MaxAlpha=255
+MaxAlpha=400
 
 ;?Integer | Name Min Alpha
-MinAlpha=10
+MinAlpha=100
 
 ;?Color | Name Stroke Color
 StrokeColor=0,0,0
 
 ;?Integer | Name Stroke Alpha
 StrokeAlpha=170
-
-;________________________________________________________________________
-
-;@ | Name Presets | Description Install community presets or choose from pre-loaded ones | Icon [\xE9A6]
 
 ;------------------------------------------------------------------------
 
@@ -150,12 +148,14 @@ DeviceName=
 ;?Toggle | Name Use Input | Description Use Input as source(AudioAnalyzer recommended, DeviceID overrides this setting)
 IObool=0
 
+Channel=Auto
+
 ;AudioAnalyzer
-Default0=DefaultOutput
 Default1=DefaultInput
+Default0=DefaultOutput
+AnalyzerPort=[#Analyzer[#DeviceIDbool]]
 Analyzer0=[#Default[#IObool]]
 Analyzer1="ID: [#DeviceID]"
-AnalyzerPort=[#Analyzer[#DeviceIDbool]]
 
 ;AudioLevel
 Port=[#LevelSource[#IObool]]
@@ -184,8 +184,17 @@ Attack=0
 ;?Integer | Name Falling Delay | Description in milliseconds
 Decay=0
 
+;?Integer | Name Resolution | Description see audioanalyzer docs for more info
+BinWidth=15
+
 ;?Integer | Name Smoothing Level | Description How smooth your visuallizer is
-BlurRadius=2
+BlurRadius=50
+
+;?Integer | Name Minimum Frequency | Description !Note: Please don't change for the time being
+FreqMin=20
+
+;?Integer | Name Maximum Frequency | Description !Note: Please don't change for the time being
+FreqMax=16000
 
 ;________________________________________________________________________
 
@@ -239,10 +248,10 @@ MirrorY_G1XOffset=0
 MirrorY_G2XOffset=0
 
 ;?String | Name First Y-Offset
-MirrorY_G1YOffset=0
+MirrorY_G1YOffset=100
 
 ;?String | Name Second Y-Offset 
-MirrorY_G2YOffset=-20
+MirrorY_G2YOffset=0
 
 ;@ | Name MirrorX Settings
 
@@ -250,7 +259,7 @@ MirrorY_G2YOffset=-20
 MirrorX_G1XOffset=0
 
 ;?String | Name Second X-Offset
-MirrorX_G2XOffset=0
+MirrorX_G2XOffset=-590
 
 ;?String | Name First Y-Offset
 MirrorX_G1YOffset=0
@@ -265,23 +274,24 @@ MirrorX_G2YOffset=0
 MirrorXY_G1XOffset=0
 
 ;?String | Name Second X-Offset
-MirrorXY_G2XOffset=-1120
+MirrorXY_G2XOffset=-1000
 
 ;?String | Name Third X-Offset
 MirrorXY_G3XOffset=0
 
 ;?String | Name Fourth X-Offset
-MirrorXY_G4XOffset=-1120
+MirrorXY_G4XOffset=-1000
 
 ;?String | Name First Y-Offset
-MirrorXY_G1YOffset=0
+MirrorXY_G1YOffset=100
 
 ;?String | Name Second Y-Offset
-MirrorXY_G2YOffset=28
+MirrorXY_G2YOffset=100
 
 ;?String | Name Third Y-Offset
-MirrorXY_G3YOffset=20
+MirrorXY_G3YOffset=0
 
 ;?String | Name Fourth Y-Offset
-MirrorXY_G4YOffset=48
+MirrorXY_G4YOffset=0
 
+BarType=MirrorXY
