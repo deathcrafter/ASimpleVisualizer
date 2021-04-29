@@ -28,7 +28,7 @@ More coming!
 ## Installation
 
 1. Install [Rainmeter](https://rainmeter.net/)
-2. Download the newest .rmskin from [releases](https://github.com/deathcrafter/ASimpleVisualizer/releases)
+2. Download the newest .rmskin from [releases](https://github.com/deathcrafter/ASimpleVisualizer/releases/latest)
 
 ## Credits
 
