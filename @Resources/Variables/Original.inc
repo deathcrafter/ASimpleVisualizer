@@ -33,7 +33,7 @@ https://github.com/deathcrafter/ASimpleVisualizer=https://github.com/deathcrafte
 ;@Default | Name Visualizer Settings | Icon [\xF61F]
 
 ;?Integer | Name BarCount | Description Number of Bars
-Bands=30
+Bands=60
 
 ;?Integer | Name Height | Description Height of Bars
 Height=300
@@ -48,10 +48,10 @@ BarGap=6
 BarStrokeWidth=0
 
 ;?Integer | Name Corner Rounding | Description How rounded the bars are
-CornerRounding=0
+CornerRounding=3
 
 ;?Integer | Name Levitation | Description The amount bars go up while visualizing
-Levitate=0
+Levitate=10
 
 ;?Toggle | Name Flip
 flipBool=0
@@ -60,7 +60,7 @@ flipBool=0
 Angle=0
 
 ;?Integer | Name Minimum Height | Description Minimun height of Bars
-MinimumHeight=28
+MinimumHeight=10
 
 ;?Integer | Name Update Rate | Description Update Rate of visualizer(Value between 16 to 25 recommended)
 UpdateRate=16
@@ -292,4 +292,4 @@ MirrorXY_G3YOffset=20
 ;?String | Name Fourth Y-Offset
 MirrorXY_G4YOffset=20
 
-BarType=MirrorXY
+BarType=Normal

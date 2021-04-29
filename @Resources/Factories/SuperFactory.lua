@@ -4,7 +4,6 @@ function CalculateAudioBands()
 	local file = io.open(SKIN:GetVariable('@').."MeasuresandBars\\Measures.inc", "w")
 	
 	local t = {}
-	print("x"..measure)
 	if measure == '0' then
 		for i = 1, num do
 			table.insert(t, "[MeasureBand" .. i-1 .. "]".."\n".."Measure=Plugin\nPlugin=AudioLevel\nParent=MeasureAudio\nType=Band\nBandIdx="..i.."")
@@ -230,8 +229,6 @@ function DrawMirrorY()
 
     local height1= 2*height+2*levitate+4*barStrokeWidth+2*minimumHeight+gr2yoff
 
-	print(height1)
-
     --;____________________________________________________________________________________________
 	local t = {}
 
@@ -399,7 +396,6 @@ function DrawMirrorXY()
     	    table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k + gr1xoff+barStrokeWidth .. ",(" .. height + levitate + gr1yoff+minimumHeight+barStrokeWidth .. "-".. levitate .."*[MeasureBand"..k.."]),".. barWidth ..",(".. -1*height .."*[MeasureBand"..k.."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth "..barStrokeWidth )
     	end
     	for j = num+1, 2*num do
-			print((a*(j-1) + gr2xoff+barStrokeWidth))
     	    table.insert(t, "Shape" .. j .. "=Rectangle " .. a*(j-1) + gr2xoff+barStrokeWidth .. ",(" .. height + levitate + gr2yoff +minimumHeight+barStrokeWidth.. " -".. levitate .."*[MeasureBand"..(num*2 - j).."]),".. barWidth..",(".. -1*height .."*[MeasureBand"..(num*2 - j).."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color"..(num*2 - j).."# | StrokeWidth "..barStrokeWidth)
     	end
 		for i = 2*num+1, 3*num do
@@ -474,7 +470,6 @@ function CreateColors()
 		end
 	end
 
-	print(alpha[0])
     local c = {}
 
     table.insert(c, "[Variables]")
