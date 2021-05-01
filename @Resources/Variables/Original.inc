@@ -2,7 +2,7 @@
 
 ;Write preset name and credentials here.
 PresetName=Original
-AuthorName=Unknown
+AuthorName=death.crafter
 PresetImage=#@#CustomImages\Original
 
 ;------------------------------------------------------------------------
@@ -180,10 +180,10 @@ EquaTypeBool=1
 WindowFunction=Kaiser
 
 ;?Integer | Name Maximum Sensititvity
-MaxSensitivity=35
+MaxSensitivity=30
 
 ;?Integer | Name Minimum Sensitivity
-MinSensitivity=6
+MinSensitivity=12
 
 ;?Integer | Name Rising Delay | Description in milliseconds
 Attack=0
@@ -217,7 +217,7 @@ FFTAttack=15
 FFTDecay=100
 
 ;?Integer | Name Sensitivity | Description Less values respond to low level audio and high values only to high level audio
-Sensitivity=35
+Sensitivity=50
 
 ;--------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -292,4 +292,4 @@ MirrorXY_G3YOffset=20
 ;?String | Name Fourth Y-Offset
 MirrorXY_G4YOffset=20
 
-BarType=Normal
+BarType=Reflection

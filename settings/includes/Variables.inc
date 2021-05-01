@@ -134,7 +134,7 @@ s_ScrollIndicatorRounding=5
 
 ; Internal
 ;? |
-s_CurrentCategory=0
+s_CurrentCategory=4
 ;? |
 s_ScrollSpeed=50
 ;? |
@@ -144,7 +144,7 @@ s_ScrollLeftPanel=0
 ;? |
 s_InputTextFontSize=[#s_FontSize3]
 ;? |
-s_ScrollTreshold=([#s_PanelH] - ([#s_PanelH] / 4))
+s_ScrollTreshold=([#s_PanelH])
 
 ;@ | Name Debug colors
 s_DebugColors=0
