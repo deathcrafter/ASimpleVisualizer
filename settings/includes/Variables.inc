@@ -159,4 +159,6 @@ s_DebugListColor1=255,0,0,100
 ;? |
 s_DebugIconColor1=255,0,0,100
 
+;ASVSettings
 s_PresetFile=Original.inc
+s_DeviceInstalled=0

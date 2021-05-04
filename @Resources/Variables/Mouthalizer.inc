@@ -295,3 +295,4 @@ MirrorXY_G3YOffset=0
 MirrorXY_G4YOffset=0
 
 BarType=MirrorXY
+ImageUnderlayName=alena-aenami-004-1k1.jpg

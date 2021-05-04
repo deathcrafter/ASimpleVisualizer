@@ -17,11 +17,11 @@ Action=Copy
 FilePath=#SKINSPATH#ASimpleVisualizer\@Resources\CustomImages
 Silent=1
 ReplaceIfExists=1
-OnDropAction=[!WriteKeyValue ImageCover ImageName "#SKINSPATH#ASimpleVisualizer\@Resources\CustomImages\$Name$.$Type$" "#SKINSPATH#ASimpleVisualizer\Visualizer\ASimpleVisualizer.ini"][!WriteKeyValue DragImage ImageName "#SKINSPATH#ASimpleVisualizer\@Resources\CustomImages\$Name$.$Type$" "#SKINSPATH#ASimpleVisualizer\@Resources\ImageUnderlay.inc"][!Refresh]
+OnDropAction=[!WriteKeyValue Variables ImageUnderlayName $Name$.$Type$ "#@#Variables\[#s_PresetFile]"][!Refresh]
 
 [DragImage]
 Meter=Image
-ImageName=C:\Users\Sceleri\Documents\Rainmeter\Skins\ASimpleVisualizer\@Resources\CustomImages\hacjikuchi smile.jpg
+ImageName=#@#CustomImages\[#ImageUnderlayName]
 W=480
 H=270
 PreserveAspectRatio=1
