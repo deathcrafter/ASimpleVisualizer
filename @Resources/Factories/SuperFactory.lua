@@ -2,7 +2,7 @@ function CalculateAudioBands()
 	local num = SKIN:GetVariable("Bands")
 	local measure = SKIN:GetVariable('EquaTypeBool')
 	local file = io.open(SKIN:GetVariable('@').."MeasuresandBars\\Measures.inc", "w")
-	
+
 	local t = {}
 	if measure == '0' then
 		for i = 1, num do
@@ -19,19 +19,19 @@ end
 
 --Here we declare a function that we will call using the script measure if the user wants to use Normal variant of visualizer.
 function DrawNormal()
-    
+
 	--The following line opens the inc file where we will create the visualizer shape. Here we use the io library of lua.
-	
+
 	local file = io.open(SKIN:GetVariable('@').."MeasuresandBars\\Visualizer.inc", "w")
-    
+
 	--;____________________________________________________________________________________________
 
     --This section gets the variables from the skin file 'GlobalVariables.inc' where we store our variables
-    
+
 	local bands = SKIN:GetVariable("Bands")
 
     local barWidth= SKIN:GetVariable("BarWidth")
-	
+
     local barGap= SKIN:GetVariable("BarGap")
 
 	local flip = SKIN:GetVariable("flipBool")
@@ -49,8 +49,8 @@ function DrawNormal()
 	local minimumHeight= SKIN:GetVariable("MinimumHeight")
     --;____________________________________________________________________________________________
 
-    --In this section we calculate the position of individual bars, height and width of total shape 
-    
+    --In this section we calculate the position of individual bars, height and width of total shape
+
 	local a = barWidth + barGap
 
     local width1= (barWidth+barGap)*bands+2*barStrokeWidth-barGap
@@ -59,8 +59,8 @@ function DrawNormal()
 
     --;____________________________________________________________________________________________
 
-    --Here we create a table named t where we will store the lines we are going to write in the file that we opened earlier. 
-	
+    --Here we create a table named t where we will store the lines we are going to write in the file that we opened earlier.
+
 	local t = {}
 
 	--;____________________________________________________________________________________________
@@ -68,41 +68,42 @@ function DrawNormal()
     --Here we insert data into table, i.e. what we want to print(notice the structure and special characters carefully)
     --The '..' characters you see are called concating operators in Lua, in layman terms they join two strings.
     --E.g. print('hello' .. 'world'..'!') will print 'helloworld!' without quotes in log.
-    --If you want a space in between you have to put it inside the quotes. 
-    
+    --If you want a space in between you have to put it inside the quotes, e.g. print('hello '..'world!') will print
+	--hello world!
+
     table.insert(t, "[MeterShape]\nMeter=Shape")
     --After this there are a lot of Maths which you will have to figure out yourself. :(
-    
+
     table.insert(t, "W="..math.abs(math.cos(angle%360*math.pi/180))*width1 + math.abs(math.sin(angle%360*math.pi/180))*height1)
     table.insert(t, "H="..math.abs(math.sin(angle%360*math.pi/180))*width1 + math.abs(math.cos(angle%360*math.pi/180))*height1)
-    
+
     --The if loop is used to see if we want to use flip. Shapes are drawn according to that.
 
     if flip == '0' then
-        table.insert(t, "Shape= Rectangle "..barStrokeWidth..", ("..height + levitate+minimumHeight + barStrokeWidth.." - #Levitate#*[MeasureBand0]),"..barWidth..", ("..(-1*height).."*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth "..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" )
-        
+        table.insert(t, "Shape= Rectangle "..barStrokeWidth..", ("..height + levitate+minimumHeight + barStrokeWidth.." - #Levitate#*[MeasureBand0]),"..barWidth..", ("..(-1*height).."*([MeasureBand0]**3) - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth "..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" )
+
         --This for loop draws all the bars we want. Notice that I have kept one bar outside the loop.
         --It is because in Rainmeter Shape meters are declared as Shape, Shape2, Shape3 and so on. The 'Shape1' is skipped.
-        --So 'Shape' is inserted the loop and the loop inserts the shapes from Shape2 to the last one.
-		
+        --So 'Shape' is inserted before the loop and the loop inserts the shapes from Shape2 to the last one.
+
         for k = 1, bands-1 do
-    	    table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k + barStrokeWidth .. ", ("..height + levitate+minimumHeight + barStrokeWidth.." - #Levitate#*[MeasureBand"..k.."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..k.."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth "..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" )	
+    	    table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k + barStrokeWidth .. ", ("..height + levitate+minimumHeight + barStrokeWidth.." - #Levitate#*[MeasureBand"..k.."]), "..barWidth..", ("..(-1*height).."*([MeasureBand"..k.."]**3) - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth "..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" )
 		end
 	else
-        table.insert(t, "Shape= Rectangle 0, ("..barStrokeWidth.."+"..levitate.."*[MeasureBand0]), "..barWidth..", ("..height.."*[MeasureBand0] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth "..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" ) 
+        table.insert(t, "Shape= Rectangle 0, ("..barStrokeWidth.."+"..levitate.."*[MeasureBand0]), "..barWidth..", ("..height.."*[MeasureBand0] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth "..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" )
 		for k = 1, bands-1 do
-    	    table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k + barStrokeWidth.. ", ("..barStrokeWidth.."+"..levitate.."*[MeasureBand"..k.."]), "..barWidth..", ("..height.."*[MeasureBand"..k.."] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth "..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" )		
+    	    table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k + barStrokeWidth.. ", ("..barStrokeWidth.."+"..levitate.."*[MeasureBand"..k.."]), "..barWidth..", ("..height.."*[MeasureBand"..k.."] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth "..barStrokeWidth.." | Stroke Color #StrokeColor#,#StrokeAlpha#" )
     	end
 	end
-    
+
     --I can't really explain the transformation matrix. Visit here (https://docs.rainmeter.net/tips/transformation-matrix-guide/) to learn more.
-    
+
     table.insert(t, "TransformationMatrix="..math.cos((-angle%360)*math.pi/180)..";"..(-math.sin((-angle%360*math.pi)/180))..";"..math.sin((-angle%360)*math.pi/180)..";"..math.cos((-angle%360)*math.pi/180)..";(((90<#Angle#%360)&(#Angle#%360<270)?"..math.abs(math.cos(angle%360*math.pi/180))*width1..":0)+((0<#Angle#%360)&(#Angle#%360<180)?"..math.abs(math.sin((angle%360)*math.pi/180))*height1..":0));(((180<#Angle#%360)&(#Angle#%360<360)?"..math.abs(math.sin(angle%360*math.pi/180))*width1..":0)+((90<#Angle#%360)&(#Angle#%360<270)?"..math.abs(math.cos((angle%360)*math.pi/180))*height1..":0))")
 	table.insert(t, "DynamicVariables = 1")
 	--;____________________________________________________________________________________________
-    
+
     --We use file:write() function to write the contents of the table to the file.
-    --Inside the paranthesis we concat the contents of table 't' with '\n' or new line. 
+    --Inside the paranthesis we concat the contents of table 't' with '\n' or new line.
 
     file:write(table.concat(t, "\n"))
 
@@ -110,7 +111,7 @@ function DrawNormal()
 
 	file:close()
     --;____________________________________________________________________________________________
-    
+
     --Here we set the Height and Width of ImageUnderlay.
 
 	SKIN: Bang('!WriteKeyValue', 'ImageCover', 'W', width1 , '#SKINSPATH#ASimpleVisualizer\\Visualizer\\ASimpleVisualizer.ini')
@@ -126,7 +127,7 @@ function DrawReflection()
 	local bands = SKIN:GetVariable("Bands")
 
 	local barWidth= SKIN:GetVariable("BarWidth")
-	
+
     local barGap= SKIN:GetVariable("BarGap")
 
     local barStrokeWidth= SKIN:GetVariable("BarStrokeWidth")
@@ -194,7 +195,7 @@ function DrawMirrorY()
 	local bands = SKIN:GetVariable("Bands")
 
 	local barWidth= SKIN:GetVariable("BarWidth")
-	
+
     local barGap= SKIN:GetVariable("BarGap")
 
 	local flip = SKIN:GetVariable("flipBool")
@@ -238,7 +239,7 @@ function DrawMirrorY()
     table.insert(t, "H="..math.abs(math.sin(angle%360*math.pi/180))*width1 + math.abs(math.cos(angle%360*math.pi/180))*height1)
 
 	if flip == '0' then
-		table.insert(t, "Shape= Rectangle "..barStrokeWidth+gr1xoff..", ("..height + levitate+minimumHeight + gr1yoff + 2*barStrokeWidth.." - #Levitate#*[MeasureBand0]), "..barWidth..", ("..(-1*height).."*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth" ..barStrokeWidth ) 
+		table.insert(t, "Shape= Rectangle "..barStrokeWidth+gr1xoff..", ("..height + levitate+minimumHeight + gr1yoff + 2*barStrokeWidth.." - #Levitate#*[MeasureBand0]), "..barWidth..", ("..(-1*height).."*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth" ..barStrokeWidth )
 	   	for k = 1, bands-1 do
 			table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k +barStrokeWidth+ gr1xoff .. ", ("..height + levitate+minimumHeight + gr1yoff + 2*barStrokeWidth.." - #Levitate#*[MeasureBand"..k.."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..k.."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth" ..barStrokeWidth )
     	end
@@ -246,7 +247,7 @@ function DrawMirrorY()
     	    table.insert(t, "Shape" .. j .. "=Rectangle " .. a*(j-bands-1)+barStrokeWidth + gr2xoff .. ",("..height + levitate+minimumHeight +2*barStrokeWidth+ gr2yoff.. "+ #Levitate#*[MeasureBand"..(j-bands-1).."]), "..barWidth..", ("..height.."*[MeasureBand"..(j-bands-1).."] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color"..(j-bands-1).."# | StrokeWidth" ..barStrokeWidth)
     	end
     else
-		table.insert(t, "Shape= Rectangle "..gr1xoff+barStrokeWidth..", ("..gr1yoff +barStrokeWidth.."+#Levitate#*[MeasureBand0]), "..barWidth..", (#Height#*[MeasureBand0] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth" ..barStrokeWidth ) 
+		table.insert(t, "Shape= Rectangle "..gr1xoff+barStrokeWidth..", ("..gr1yoff +barStrokeWidth.."+#Levitate#*[MeasureBand0]), "..barWidth..", (#Height#*[MeasureBand0] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth" ..barStrokeWidth )
 		for k = 1, bands-1 do
 			table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k +barStrokeWidth+ gr1xoff .. ", ("..gr1yoff+barStrokeWidth.."+#Levitate#*[MeasureBand"..k.."]), "..barWidth..", ("..height.."*[MeasureBand"..k.."] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth" ..barStrokeWidth )
     	end
@@ -254,7 +255,7 @@ function DrawMirrorY()
     	    table.insert(t, "Shape" .. j .. "=Rectangle " .. a*(j-bands-1)+barStrokeWidth + gr2xoff.. ",("..2*(height + levitate+minimumHeight) + gr2yoff-barStrokeWidth.." - #Levitate#*[MeasureBand"..(j-bands-1).."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..(j-bands-1).."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color"..(j-bands-1).."# | StrokeWidth" ..barStrokeWidth)
     	end
 	end
-    
+
     table.insert(t, "TransformationMatrix="..math.cos((-angle%360)*math.pi/180)..";"..(-math.sin((-angle%360*math.pi)/180))..";"..math.sin((-angle%360)*math.pi/180)..";"..math.cos((-angle%360)*math.pi/180)..";(((90<#Angle#%360)&(#Angle#%360<270)?"..math.abs(math.cos(angle%360*math.pi/180))*width1..":0)+((0<#Angle#%360)&(#Angle#%360<180)?"..math.abs(math.sin((angle%360)*math.pi/180))*height1..":0));(((180<#Angle#%360)&(#Angle#%360<360)?"..math.abs(math.sin(angle%360*math.pi/180))*width1..":0)+((90<#Angle#%360)&(#Angle#%360<270)?"..math.abs(math.cos((angle%360)*math.pi/180))*height1..":0))")
 	table.insert(t, "DynamicVariables = 1")
 
@@ -268,11 +269,11 @@ end
 
 function DrawMirrorX()
     local file = io.open(SKIN:GetVariable('@').."MeasuresandBars\\Visualizer.inc", "w")
-    
+
     local bands = SKIN:GetVariable("Bands")
 
     local barWidth= SKIN:GetVariable("BarWidth")
-	
+
     local barGap= SKIN:GetVariable("BarGap")
 
 	local flip = SKIN:GetVariable("flipBool")
@@ -311,23 +312,23 @@ function DrawMirrorX()
 	table.insert(t, "[MeterShape]\nMeter=Shape")
     table.insert(t, "W="..math.abs(math.cos(angle%360*math.pi/180))*width1 + math.abs(math.sin(angle%360*math.pi/180))*height1)
     table.insert(t, "H="..math.abs(math.sin(angle%360*math.pi/180))*width1 + math.abs(math.cos(angle%360*math.pi/180))*height1)
-    
-    table.insert(t, "Shape= Rectangle "..gr1xoff+barStrokeWidth..", ("..height + levitate+minimumHeight + gr1yoff +barStrokeWidth.." - #Levitate#*[MeasureBand0]), "..barWidth..", ("..(-1*height).."*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth " ..barStrokeWidth ) 
+
+    table.insert(t, "Shape= Rectangle "..gr1xoff+barStrokeWidth..", ("..height + levitate+minimumHeight + gr1yoff +barStrokeWidth.." - #Levitate#*[MeasureBand0]), "..barWidth..", ("..(-1*height).."*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth " ..barStrokeWidth )
     for k = 1, bands-1 do
 		table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k + gr1xoff+barStrokeWidth .. ", ("..height + levitate+minimumHeight + gr1yoff+barStrokeWidth.." - #Levitate#*[MeasureBand"..k.."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..k.."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth " ..barStrokeWidth )
 	end
 	for j = bands+1, 2*bands do
 		table.insert(t, "Shape" .. j .. "=Rectangle " .. a*(j-1) + gr2xoff +barStrokeWidth.. ",("..height + levitate+minimumHeight + gr2yoff+barStrokeWidth.." - #Levitate#*[MeasureBand"..(bands*2 - j).."]), "..barWidth..", ("..(-1*height).."*[MeasureBand"..(bands*2 - j).."] - #MinimumHeight#), "..cornerRadius.."| Fill Color #Color"..(bands*2 - j).."# | StrokeWidth " ..barStrokeWidth)
 	end
-    
+
     table.insert(t, "TransformationMatrix="..math.cos((-angle%360)*math.pi/180)..";"..(-math.sin((-angle%360*math.pi)/180))..";"..math.sin((-angle%360)*math.pi/180)..";"..math.cos((-angle%360)*math.pi/180)..";(((90<#Angle#%360)&(#Angle#%360<270)?"..math.abs(math.cos(angle%360*math.pi/180))*width1..":0)+((0<#Angle#%360)&(#Angle#%360<180)?"..math.abs(math.sin((angle%360)*math.pi/180))*height1..":0));(((180<#Angle#%360)&(#Angle#%360<360)?"..math.abs(math.sin(angle%360*math.pi/180))*width1..":0)+((90<#Angle#%360)&(#Angle#%360<270)?"..math.abs(math.cos((angle%360)*math.pi/180))*height1..":0))")
 	table.insert(t, "DynamicVariables = 1")
 	--;____________________________________________________________________________________________
-    
+
     file:write(table.concat(t, "\n"))
     file:close()
     --;____________________________________________________________________________________________
-    
+
     SKIN: Bang('!WriteKeyValue', 'ImageCover', 'W', width1 , '#SKINSPATH#ASimpleVisualizer\\Visualizer\\ASimpleVisualizer.ini')
 	SKIN: Bang('!WriteKeyValue', 'ImageCover', 'H', height1, '#SKINSPATH#ASimpleVisualizer\\Visualizer\\ASimpleVisualizer.ini')
 end
@@ -338,9 +339,9 @@ function DrawMirrorXY()
 	local file = io.open(SKIN:GetVariable('@').."MeasuresandBars\\Visualizer.inc", "w")
 
     local barWidth= SKIN:GetVariable("BarWidth")
-	
+
     local barGap= SKIN:GetVariable("BarGap")
-    
+
     local barStrokeWidth= SKIN:GetVariable("BarStrokeWidth")
 
     local height= SKIN:GetVariable("Height")
@@ -373,9 +374,10 @@ function DrawMirrorXY()
 
     local a = barWidth + barGap
 
-	local groupWidth= (gr1xoff+gr2xoff > gr3xoff+gr4xoff) and gr1xoff+gr2xoff or gr3xoff+gr4xoff 
-
-    local width1=(2*(barWidth+barGap)*num+groupWidth+4*barStrokeWidth+2*barStrokeWidth-barGap)
+	local groupWidth1= ((gr1xoff+(barWidth+barGap)*num-barGap) > (gr2xoff+2*((barWidth+barGap)*num-barGap)) and ((gr1xoff+(barWidth+barGap)*num-barGap)) or (gr2xoff+2*((barWidth+barGap)*num-barGap)))
+	local groupWidth2= ((gr3xoff+(barWidth+barGap)*num-barGap) > (gr4xoff+2*((barWidth+barGap)*num-barGap)) and ((gr3xoff+(barWidth+barGap)*num-barGap)) or (gr4xoff+2*((barWidth+barGap)*num-barGap)))
+	local groupWidth= (groupWidth1>groupWidth2 and groupWidth1 or groupWidth2)
+    local width1=groupWidth+4*barStrokeWidth
 
 	local groupHeight= (gr1yoff>gr2yoff and gr1yoff or gr2yoff) + (gr3yoff>gr4yoff and gr3yoff or gr4yoff)
 
@@ -390,7 +392,7 @@ function DrawMirrorXY()
     table.insert(t, "H=" .. math.abs(math.sin(angle%360*math.pi/180))*width1 + math.abs(math.cos(angle%360*math.pi/180))*height1)
 
 	if flip == '0' then
-    	table.insert(t, "Shape= Rectangle "..gr1xoff+barStrokeWidth..",(" .. height + levitate+ gr1yoff+minimumHeight +barStrokeWidth .. "-".. levitate .."*[MeasureBand0])," .. barWidth .. ",(".. -1*height .. "*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth ".. barStrokeWidth ) 
+    	table.insert(t, "Shape= Rectangle "..gr1xoff+barStrokeWidth..",(" .. height + levitate+ gr1yoff+minimumHeight +barStrokeWidth .. "-".. levitate .."*[MeasureBand0])," .. barWidth .. ",(".. -1*height .. "*[MeasureBand0] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth ".. barStrokeWidth )
 
 		for k = 1, num-1 do
     	    table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k + gr1xoff+barStrokeWidth .. ",(" .. height + levitate + gr1yoff+minimumHeight+barStrokeWidth .. "-".. levitate .."*[MeasureBand"..k.."]),".. barWidth ..",(".. -1*height .."*[MeasureBand"..k.."] - #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth "..barStrokeWidth )
@@ -405,7 +407,7 @@ function DrawMirrorXY()
     	    table.insert(t, "Shape" .. h .. "=Rectangle " .. a*(h-2*num-1) + gr4xoff+barStrokeWidth .. ",(".. height + levitate + gr4yoff+minimumHeight+barStrokeWidth .."+".. levitate .."*[MeasureBand"..(num*4 - h).."]),"..barWidth..", ("..height.."*[MeasureBand"..(num*4 - h).."] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color"..(num*4 - h).."# | StrokeWidth "..barStrokeWidth)
     	end
 	else
-    	table.insert(t, "Shape= Rectangle "..gr1xoff..", ("..gr1yoff.." +#Levitate#*[MeasureBand0]), "..barWidth..", ("..height.."*[MeasureBand0] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth" ..barStrokeWidth) 
+    	table.insert(t, "Shape= Rectangle "..gr1xoff..", ("..gr1yoff.." +#Levitate#*[MeasureBand0]), "..barWidth..", ("..height.."*[MeasureBand0] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color0# | StrokeWidth" ..barStrokeWidth)
 
 		for k = 1, num-1 do
     	    table.insert(t, "Shape" .. k+1 .. "=Rectangle " .. a*k+gr1xoff .. ", ("..gr1yoff.."+#Levitate#*[MeasureBand"..k.."]), "..barWidth..", ("..height.."*[MeasureBand"..k.."] + #MinimumHeight#), "..cornerRadius.." | Fill Color #Color" ..k.."# | StrokeWidth" ..barStrokeWidth)
@@ -437,25 +439,20 @@ function CreateColors()
 	local defaultColor= SKIN:GetVariable("ColorA0")
 	local bartype = SKIN:GetVariable("BarType")
 	local liveAlphaBool=SKIN:GetVariable("LiveAlphaBool")
-	
+
     local fileColors = io.open(SKIN:GetVariable('@').."Variables\\Gradient.inc", "w")
 
     local calc={}
-	for i = 1, 10 do
+	table.insert(calc, 0, 0)
+	for i = 0, 10 do
 		table.insert(calc, i, ( i~=colornum ) and (barCount - barCount%colornum)*i/colornum or barCount)
 	end
 	local red={}
-	for i = 0, colornum do
-    	table.insert(red,i,substituteRed(SKIN:GetVariable("ColorA" .. i)))
-	end
-
 	local green={}
-	for i = 0, colornum do
-    	table.insert(green,i,substituteGreen(SKIN:GetVariable("ColorA" .. i)))
-	end
-
 	local blue={}
 	for i = 0, colornum do
+    	table.insert(red,i,substituteRed(SKIN:GetVariable("ColorA" .. i)))
+    	table.insert(green,i,substituteGreen(SKIN:GetVariable("ColorA" .. i)))
     	table.insert(blue,i,substituteBlue(SKIN:GetVariable("ColorA" .. i)))
 	end
 
@@ -475,38 +472,13 @@ function CreateColors()
     table.insert(c, "[Variables]")
 	if 	bartype ~= 'Reflection' then
 		if colornum>=1 then
-			for i = 0, calc[1]-1 do	
-				table.insert(c, "Color" ..i.. "=" ..red[0] + (red[1] - red[0])*i/calc[1] .. "," ..green[0] + (green[1] - green[0])*i/calc[1] .. "," ..blue[0] + (blue[1] - blue[0])*i/calc[1] .. alpha[i] )
-			end
-			for i = calc[1], calc[2]-1 do
-				if colornum<2 then
+			for j=0 ,colornum-1, 1 do
+				if colornum<j+1 then
 					break
 				end
-				table.insert(c, "Color" ..i.. "=" ..red[1] + (red[2] - red[1])*(i-calc[1])/(calc[2]-calc[1]) .. "," ..green[1] + (green[2] - green[1])*(i-calc[1])/(calc[2]-calc[1]) .. "," ..blue[1] + (blue[2] - blue[1])*(i-calc[1])/(calc[2]-calc[1]) .. alpha[i] )
-			end
-			for i = calc[2], calc[3]-1 do
-				if colornum<3 then
-					break
+				for i = calc[j], calc[j+1]-1 do
+					table.insert(c, "Color" ..i.. "=" ..red[j] + (red[j+1] - red[j])*(i-calc[j])/(calc[j+1] - calc[j]) .. "," ..green[j] + (green[j+1] - green[j])*(i-calc[j])/(calc[j+1] - calc[j]) .. "," ..blue[j] + (blue[j+1] - blue[j])*(i-calc[j])/(calc[j+1] - calc[j]) .. alpha[i] )
 				end
-				table.insert(c, "Color" ..i.. "=" ..red[2] + (red[3] - red[2])*(i-calc[2])/(calc[3]-calc[2]) .. "," ..green[2] + (green[3] - green[2])*(i-calc[2])/(calc[3]-calc[2]) .. "," ..blue[2] + (blue[3] - blue[2])*(i-calc[2])/(calc[3]-calc[2]) .. alpha[i] )
-			end
-			for i = calc[3], calc[4]-1 do
-				if colornum<4 then
-					break
-				end
-				table.insert(c, "Color" ..i.. "=" ..red[3] + (red[4] - red[3])*(i-calc[3])/(calc[4]-calc[3]) .. "," ..green[3] + (green[4] - green[3])*(i-calc[3])/(calc[4]-calc[3]) .. "," ..blue[3] + (blue[4] - blue[3])*(i-calc[3])/(calc[4]-calc[3]) .. alpha[i] )
-			end
-			for i = calc[4], calc[5]-1 do
-				if colornum<5 then
-					break
-				end
-				table.insert(c, "Color" ..i.. "=" ..red[4] + (red[5] - red[4])*(i-calc[4])/(calc[5]-calc[4]) .. "," ..green[4] + (green[5] - green[4])*(i-calc[4])/(calc[5]-calc[4]) .. "," ..blue[4] + (blue[5] - blue[4])*(i-calc[4])/(calc[5]-calc[4]) .. alpha[i] )
-			end
-			for i = calc[5], calc[6]-1 do
-				if colornum<6 then
-					break
-				end
-				table.insert(c, "Color" ..i.. "=" ..red[5] + (red[6] - red[5])*(i-calc[5])/(calc[6]-calc[5]) .. "," ..green[5] + (green[6] - green[5])*(i-calc[5])/(calc[6]-calc[5]) .. "," ..blue[5] + (blue[6] - blue[5])*(i-calc[5])/(calc[6]-calc[5]) .. alpha[i] )
 			end
 		else
 			for i = 0, barCount-1 do
@@ -515,46 +487,21 @@ function CreateColors()
 		end
 	else
 		if colornum>=1 then
-			for i = 0, calc[1]-1 do	
-				table.insert(c, "Color" ..i.. "=" ..red[0] + (red[1] - red[0])*i/calc[1] .. "," ..green[0] + (green[1] - green[0])*i/calc[1] .. "," ..blue[0] + (blue[1] - blue[0])*i/calc[1] )
-			end
-			for i = calc[1], calc[2]-1 do
-				if colornum<2 then
+			for j=0 ,colornum-1, 1 do
+				if colornum<j+1 then
 					break
 				end
-				table.insert(c, "Color" ..i.. "=" ..red[1] + (red[2] - red[1])*(i-calc[1])/(calc[2]-calc[1]) .. "," ..green[1] + (green[2] - green[1])*(i-calc[1])/(calc[2]-calc[1]) .. "," ..blue[1] + (blue[2] - blue[1])*(i-calc[1])/(calc[2]-calc[1]) )
-			end
-			for i = calc[2], calc[3]-1 do
-				if colornum<3 then
-					break
+				for i = calc[j], calc[j+1]-1 do
+					table.insert(c, "Color" ..i.. "=" ..red[j] + (red[j+1] - red[j])*(i-calc[j])/(calc[j+1] - calc[j]) .. "," ..green[j] + (green[j+1] - green[j])*(i-calc[j])/(calc[j+1] - calc[j]) .. "," ..blue[j] + (blue[j+1] - blue[j])*(i-calc[j])/(calc[j+1] - calc[j]))
 				end
-				table.insert(c, "Color" ..i.. "=" ..red[2] + (red[3] - red[2])*(i-calc[2])/(calc[3]-calc[2]) .. "," ..green[2] + (green[3] - green[2])*(i-calc[2])/(calc[3]-calc[2]) .. "," ..blue[2] + (blue[3] - blue[2])*(i-calc[2])/(calc[3]-calc[2]))
-			end
-			for i = calc[3], calc[4]-1 do
-				if colornum<4 then
-					break
-				end
-				table.insert(c, "Color" ..i.. "=" ..red[3] + (red[4] - red[3])*(i-calc[3])/(calc[4]-calc[3]) .. "," ..green[3] + (green[4] - green[3])*(i-calc[3])/(calc[4]-calc[3]) .. "," ..blue[3] + (blue[4] - blue[3])*(i-calc[3])/(calc[4]-calc[3]))
-			end
-			for i = calc[4], calc[5]-1 do
-				if colornum<5 then
-					break
-				end
-				table.insert(c, "Color" ..i.. "=" ..red[4] + (red[5] - red[4])*(i-calc[4])/(calc[5]-calc[4]) .. "," ..green[4] + (green[5] - green[4])*(i-calc[4])/(calc[5]-calc[4]) .. "," ..blue[4] + (blue[5] - blue[4])*(i-calc[4])/(calc[5]-calc[4]))
-			end
-			for i = calc[5], calc[6]-1 do
-				if colornum<6 then
-					break
-				end
-				table.insert(c, "Color" ..i.. "=" ..red[5] + (red[6] - red[5])*(i-calc[5])/(calc[6]-calc[5]) .. "," ..green[5] + (green[6] - green[5])*(i-calc[5])/(calc[6]-calc[5]) .. "," ..blue[5] + (blue[6] - blue[5])*(i-calc[5])/(calc[6]-calc[5]))
 			end
 		else
 			for i = 0, barCount-1 do
 				table.insert(c, "Color" ..i.. "=" ..defaultColor)
 			end
 		end
-	end		
-	
+	end
+
 	fileColors:write(table.concat(c, "\n"))
 	fileColors:close()
 end
@@ -572,7 +519,7 @@ end
 function GetAudioDevices()
     local file = io.open(SKIN:GetVariable('@').."DeviceID\\DeviceID.ps1", "w")
     local t={}
-    
+
     table.insert(t,1, 'New-Item "$($profile | split-path)\\Modules\\AudioDeviceCmdlets" -Type directory -Force\nCopy-Item "'..SKIN:GetVariable('@')..'DeviceID\\AudioDeviceCmdlets.dll" "$($profile | split-path)\\Modules\\AudioDeviceCmdlets\\AudioDeviceCmdlets.dll"\nSet-Location "$($profile | Split-Path)\\Modules\\AudioDeviceCmdlets"\nGet-ChildItem | Unblock-File\nImport-Module AudioDeviceCmdlets\nGet-AudioDevice -List')
 
     file:write(t[1])
@@ -589,4 +536,49 @@ function changePS1()
 	SKIN:Bang('!WriteKeyValue', 'GetIDString', 'Text', 'GetIDs', '#SKINSPATH#ASimpleVisualizer\\settings\\categories\\7.inc')
 	SKIN:Bang('!WriteKeyValue', 'GetID', 'LeftMouseUpAction', '[powershell.exe -ExecutionPolicy ByPass -NoExit #@#DeviceID\\DeviceID.ps1]', '#SKINSPATH#ASimpleVisualizer\\settings\\categories\\7.inc' )
 	SKIN:Bang('!Refresh')
+end
+
+function DrawRound()
+	local file = io.open(SKIN:GetVariable('@').."MeasuresandBars\\Visualizer.inc", "w")
+
+	local bands = SKIN:GetVariable("Bands")
+
+    local barWidth= SKIN:GetVariable("BarWidth")
+
+    local barStrokeWidth= SKIN:GetVariable("BarStrokeWidth")
+
+    local height= SKIN:GetVariable("Height")
+
+    local radius= SKIN:GetVariable("Radius")
+
+	local angleStart= SKIN: GetVariable("StartAngle")
+
+    local totalAngle= SKIN:GetVariable("TotalAngle")
+
+	local cornerRadius= SKIN:GetVariable("CornerRounding")
+
+	local minimumHeight= SKIN:GetVariable("MinimumHeight")
+
+	local t={}
+
+	local u={}
+
+	table.insert(t, "[MeterShape]\nMeter=Shape")
+	table.insert(t, "W=".. 2*height+2*radius)
+	table.insert(t, "H=".. 2*height+2*radius)
+	
+	table.insert(t, "Shape=Line ("..(-math.cos(math.rad(angleStart))*radius)+height+radius.."), ("..-math.sin(math.rad(angleStart))*radius+height+radius.."), (" ..(-math.cos(math.rad(angleStart))).."*([#Radius]+(Clamp([#Height]*[MeasureBand0], [#MinimumHeight], [#Height])))+"..height+radius.."), (" ..(-math.sin(math.rad(angleStart))).."*([#Radius]+(Clamp([#Height]*[MeasureBand0], [#MinimumHeight], [#Height])))+"..height+radius..") | StrokeWidth"..barWidth.." | Stroke Color #Color0#")
+	
+    table.insert(u, "Shape"..bands+1 .."=Combine Shape")    
+		for k = 1, bands-1 do
+    	    table.insert(t, "Shape" .. k+1 .. "=Line ("..(-math.cos(math.rad(angleStart + k*totalAngle/bands))*radius)+height+radius .. "), ("..-math.sin(math.rad(angleStart + k*totalAngle/bands))*radius+height+radius.."), (" ..(-math.cos(math.rad(angleStart + k*totalAngle/bands))).."*([#Radius]+(Clamp([#Height]*[MeasureBand"..k.."], [#MinimumHeight], [#Height])))+"..height+radius.."), (" ..(-math.sin(math.rad(angleStart + k*totalAngle/bands))).."*([#Radius]+(Clamp([#Height]*[MeasureBand"..k.."], [#MinimumHeight], [#Height])))+"..height+radius..") | StrokeWidth"..barWidth.." | Stroke Color #Color"..k.."#")
+			
+			table.insert(u, " | Union Shape"..k+1)
+		end
+	table.insert(t, table.concat(u, ""))
+	table.insert(t, "DynamicVariables=1")
+
+	file:write(table.concat(t, "\n"))
+
+	file:close()
 end

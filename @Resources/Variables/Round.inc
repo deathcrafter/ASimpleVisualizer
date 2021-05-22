@@ -1,7 +1,11 @@
 [Variables]
-PresetName=Boxes
-AuthorName=Sceleri
-PresetImage=#@#CustomImages\boxes
+Round=1
+
+
+;Write preset name and credentials here.
+PresetName=Original
+AuthorName=death.crafter
+PresetImage=#@#CustomImages\Original
 
 ;------------------------------------------------------------------------
 
@@ -34,31 +38,31 @@ https://github.com/deathcrafter/ASimpleVisualizer=https://github.com/deathcrafte
 Bands=40
 
 ;?Integer | Name Height | Description Height of Bars
-Height=8
+Height=100
 
 ;?Integer | Name Bar Width | Description Width of individual Bars
-BarWidth=14
+BarWidth=3
 
 ;?Integer | Name Bar Gap | Description Gap between consecutive Bars
-BarGap=0
+Radius=100
 
 ;?Integer | Name StrokeWidth | Description Stroke width of Bars
 BarStrokeWidth=0
 
 ;?Integer | Name Corner Rounding | Description How rounded the bars are
-CornerRounding=0
+CornerRounding=3
 
-;?Integer | Name Levitation | Description The amount bars go up while visualizing
-Levitate=8
+;?Integer | Name Start Angle | Description 
+StartAngle=0
 
 ;?Toggle | Name Flip
 flipBool=0
 
-;?Integer | Name Angle | Description Angle of visualizer
-Angle=0
+;?Integer | Name Total Angle | Description 
+TotalAngle=360
 
 ;?Integer | Name Minimum Height | Description Minimun height of Bars
-MinimumHeight=28
+MinimumHeight=10
 
 ;?Integer | Name Update Rate | Description Update Rate of visualizer(Value between 16 to 25 recommended)
 UpdateRate=16
@@ -88,21 +92,21 @@ ImgVis1=[!WriteKeyValue ImageCover Meter "" "#SKINSPATH#ASimpleVisualizer\Visual
 ;@Default | Name Colors | Description Define color of your visualizer or use a gradient of up to 7 colors | Icon [\xE790]
 
 ;?Integer | Name Color Count | Description Number of colors you want in gradient.(for no gradient 1)
-ColorCount=1
+ColorCount=5
 ;?Color | Name Color 1 | Description Default color or first color of gradient
-ColorA0=255,255,255
+ColorA0=154,255,13
 
 ;?Color | Name Color 2
-ColorA1=255, 127, 0
+ColorA1=0,255,242
 
 ;?Color | Name Color 3
-ColorA2=255,145,0
+ColorA2=255,0,195
 
 ;?Color | Name Color 4
 ColorA3=238,255,0
 
 ;?Color | Name Color 5
-ColorA4=51,245,29
+ColorA4=255,0,0
 
 ;?Color | Name Color 6
 ColorA5=19,162,194
@@ -114,10 +118,10 @@ ColorA6=0,56,224
 LiveAlphaBool=1
 
 ;?Integer | Name Max Alpha
-MaxAlpha=255
+MaxAlpha=400
 
 ;?Integer | Name Min Alpha
-MinAlpha=10
+MinAlpha=100
 
 ;?Color | Name Stroke Color
 StrokeColor=0,0,0
@@ -128,6 +132,9 @@ StrokeAlpha=170
 ;________________________________________________________________________
 
 ;@ | Name Presets | Description Install community presets or choose from pre-loaded ones | Icon [\xE9A6]
+
+;?Info | Name Preset Name: [#PresetName] | Link 0 | Description Author: [#AuthorName]
+Preset=
 
 ;------------------------------------------------------------------------
 
@@ -149,7 +156,7 @@ DeviceName=
 ;?Toggle | Name Use Input | Description Use Input as source(AudioAnalyzer recommended, DeviceID overrides this setting)
 IObool=0
 
-;?String | Name Channel
+;?String | Name Channel | Description Values: FL :: FR :: C :: SL :: SR :: BL :: BR :: BC#CRLF#F: Front :: S:Side :: B:Back :: L:Left :: R:Right :: C:Center 
 Channel=Auto
 
 ;AudioAnalyzer
@@ -175,10 +182,10 @@ EquaTypeBool=1
 WindowFunction=Kaiser
 
 ;?Integer | Name Maximum Sensititvity
-MaxSensitivity=35
+MaxSensitivity=50
 
 ;?Integer | Name Minimum Sensitivity
-MinSensitivity=6
+MinSensitivity=12
 
 ;?Integer | Name Rising Delay | Description in milliseconds
 Attack=0
@@ -212,80 +219,4 @@ FFTAttack=15
 FFTDecay=100
 
 ;?Integer | Name Sensitivity | Description Less values respond to low level audio and high values only to high level audio
-Sensitivity=35
-
-;--------------------------------------------------------------------------------------------------------------------------------------------
-
-;@Topic | Name Experimental | Icon [\xEA86]
-
-;@ | Name Reflection
-
-;?Integer | Name Reflection Percentage | Description Reflection length in terms of percentage of height
-ReflectionPercentage=70
-
-;?String | Name Reflection Distance
-ReflectionDistance=30
-
-;?Integer | Name First X-Offset
-Reflection_G1XOffset=0
-
-;?Integer | Name Second X-Offset
-Reflection_G2XOffset=0
-
-;@ | Name MirrorY Settings
-
-;?String | Name First X-Offset
-MirrorY_G1XOffset=0
-
-;?String | Name Second X-Offset
-MirrorY_G2XOffset=0
-
-;?String | Name First Y-Offset
-MirrorY_G1YOffset=0
-
-;?String | Name Second Y-Offset 
-MirrorY_G2YOffset=-20
-
-;@ | Name MirrorX Settings
-
-;?String | Name First X-Offset
-MirrorX_G1XOffset=0
-
-;?String | Name Second X-Offset
-MirrorX_G2XOffset=0
-
-;?String | Name First Y-Offset
-MirrorX_G1YOffset=0
-
-;?String | Name Second Y-Offset
-MirrorX_G2YOffset=0
-
-;@ | Name MirrorXY Settings
-
-
-;?String | Name First X-Offset
-MirrorXY_G1XOffset=0
-
-;?String | Name Second X-Offset
-MirrorXY_G2XOffset=-560
-
-;?String | Name Third X-Offset
-MirrorXY_G3XOffset=0
-
-;?String | Name Fourth X-Offset
-MirrorXY_G4XOffset=-560
-
-;?String | Name First Y-Offset
-MirrorXY_G1YOffset=0
-
-;?String | Name Second Y-Offset
-MirrorXY_G2YOffset=28
-
-;?String | Name Third Y-Offset
-MirrorXY_G3YOffset=20
-
-;?String | Name Fourth Y-Offset
-MirrorXY_G4YOffset=48
-
-BarType=MirrorXY
-ImageUnderlayName=alena-aenami-004-1k1.jpg
+Sensitivity=50

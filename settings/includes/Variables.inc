@@ -134,7 +134,7 @@ s_ScrollIndicatorRounding=5
 
 ; Internal
 ;? |
-s_CurrentCategory=4
+s_CurrentCategory=0
 ;? |
 s_ScrollSpeed=50
 ;? |

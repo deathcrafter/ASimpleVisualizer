@@ -33,34 +33,34 @@ https://github.com/deathcrafter/ASimpleVisualizer=https://github.com/deathcrafte
 ;@Default | Name Visualizer Settings | Icon [\xF61F]
 
 ;?Integer | Name BarCount | Description Number of Bars
-Bands=60
+Bands=46
 
 ;?Integer | Name Height | Description Height of Bars
-Height=300
+Height=100
 
 ;?Integer | Name Bar Width | Description Width of individual Bars
-BarWidth=12
+BarWidth=6
 
 ;?Integer | Name Bar Gap | Description Gap between consecutive Bars
-BarGap=6
+BarGap=3
 
 ;?Integer | Name StrokeWidth | Description Stroke width of Bars
 BarStrokeWidth=0
 
 ;?Integer | Name Corner Rounding | Description How rounded the bars are
-CornerRounding=3
+CornerRounding=0
 
 ;?Integer | Name Levitation | Description The amount bars go up while visualizing
-Levitate=10
+Levitate=0
 
 ;?Toggle | Name Flip
-flipBool=0
+flipBool=1
 
 ;?Integer | Name Angle | Description Angle of visualizer
 Angle=0
 
 ;?Integer | Name Minimum Height | Description Minimun height of Bars
-MinimumHeight=10
+MinimumHeight=1
 
 ;?Integer | Name Update Rate | Description Update Rate of visualizer(Value between 16 to 25 recommended)
 UpdateRate=16
@@ -90,15 +90,15 @@ ImgVis1=[!WriteKeyValue ImageCover Meter "" "#SKINSPATH#ASimpleVisualizer\Visual
 ;@Default | Name Colors | Description Define color of your visualizer or use a gradient of up to 7 colors | Icon [\xE790]
 
 ;?Integer | Name Color Count | Description Number of colors you want in gradient.(for no gradient 1)
-ColorCount=7
+ColorCount=1
 ;?Color | Name Color 1 | Description Default color or first color of gradient
-ColorA0=255, 0, 0
+ColorA0=255,255,255
 
 ;?Color | Name Color 2
-ColorA1=255, 127, 0
+ColorA1=0,255,242
 
 ;?Color | Name Color 3
-ColorA2=255,145,0
+ColorA2=255,0,195
 
 ;?Color | Name Color 4
 ColorA3=238,255,0
@@ -116,10 +116,10 @@ ColorA6=0,56,224
 LiveAlphaBool=1
 
 ;?Integer | Name Max Alpha
-MaxAlpha=255
+MaxAlpha=270
 
 ;?Integer | Name Min Alpha
-MinAlpha=10
+MinAlpha=130
 
 ;?Color | Name Stroke Color
 StrokeColor=0,0,0
@@ -180,10 +180,10 @@ EquaTypeBool=1
 WindowFunction=Kaiser
 
 ;?Integer | Name Maximum Sensititvity
-MaxSensitivity=30
+MaxSensitivity=45
 
 ;?Integer | Name Minimum Sensitivity
-MinSensitivity=12
+MinSensitivity=9
 
 ;?Integer | Name Rising Delay | Description in milliseconds
 Attack=0
@@ -192,7 +192,7 @@ Attack=0
 Decay=0
 
 ;?Integer | Name Smoothing Level | Description How smooth your visuallizer is
-BlurRadius=2
+BlurRadius=1
 
 ;________________________________________________________________________
 
@@ -208,7 +208,7 @@ MinFrequency=20
 MaxFrequency=20000
 
 ;?Integer | Name Resolution | Description Usually an even number, preferrably a power of 2
-FFTSize=2048
+FFTSize=8192
 
 ;?Integer | Name Rising Delay | Description in milliseconds
 FFTAttack=15
@@ -292,5 +292,5 @@ MirrorXY_G3YOffset=20
 ;?String | Name Fourth Y-Offset
 MirrorXY_G4YOffset=20
 
-BarType=Reflection
+BarType=Normal
 ImageUnderlayName=alena-aenami-004-1k1.jpg
