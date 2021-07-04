@@ -40,7 +40,6 @@ Thank you to:
 * [@sceleri](https://github.com/sceleri) for the preset themes, beta testing and [Settings Generator](https://github.com/sceleri/settings). 
 
 ## To-Do List:
-- [ ] Fix minimum height(Use clamp)
-- [ ] Add community theme support
-- [ ] Add live gradient in experimental section
-- [ ] Add Gradient support for stroke
+- [x] Fix minimum height(Use clamp)
+- [x] Add community theme support
+- [x] Add Gradient support for stroke
